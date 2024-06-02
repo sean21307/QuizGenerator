@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-
+//test change
 public class Main {
     static Map<String, Object> variables = new HashMap<String, Object>();
 
