@@ -1,0 +1,15 @@
+Question #1:
+
+#R1#: int, random, 1, 10
+#R2#: int, random, 1, 8
+#R3#: int, random, 1, 3
+
+:Text:
+What are variables' values after the following code segment is executed?
+long quantity = #R1# + #R2# / #R3#;
+
+Pay attention to how to specify a long value.
+:EndText:
+
+Solution: #R1# + #R2# / #R3#
+Unit: {L, l}
