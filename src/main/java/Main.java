@@ -1,10 +1,15 @@
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
+
 //test change
 public class Main {
     static Map<String, Object> variables = new HashMap<String, Object>();
@@ -28,10 +33,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        String filePath = "src/template.txt";
+        String filePath = "src/main/java/template.txt";
         Random rand = new Random();
 
         try (Scanner file = new Scanner(new File(filePath));) {
+            XWPFDocument document = new XWPFDocument();
+            FileOutputStream out = new FileOutputStream("quiz.docx");
+
             String questionNumber = "";
 
             while (file.hasNext()) {
@@ -47,40 +55,117 @@ public class Main {
                     String variableName = nextLine.substring(1, 3);
                     int colonIndex = nextLine.indexOf(":");
                     String sub = nextLine.substring(colonIndex + 1);
-                    String[] variableInformation = sub.trim().split(",");
-                    String variableType = variableInformation[0].trim();
-                    String generationType = variableInformation[1].trim();
 
-                    if (variableType.equals("int")) {
-                        if (generationType.equals("random")) {
-                            int min = Integer.parseInt(variableInformation[2].trim());
-                            int max = Integer.parseInt(variableInformation[3].trim());
-                            int generated = rand.nextInt(max + 1 - min) + min;
-                            variables.put(variableName, generated);
-                            System.out.println(String.format("Q%s-%s: %d", questionNumber, variableName, generated));
+                    // Used to denote a set of units
+                    if (sub.contains("{")) {
+                        ArrayList<String> setValues = new ArrayList<String>();
+                        sub = sub.substring(2, sub.length() - 1);
+
+                        String[] split = sub.split(",");
+                        for (String setValueName: split) {
+                            setValues.add(setValueName.trim());
                         }
+
+                        variables.put(variableName, setValues);
                     }
 
+                    // Used to randomly pick a unit from a set of units
+                    else if (sub.contains("from")) {
+                        int hashMark = sub.indexOf("#");
+                        int hashMark2 = sub.indexOf("#", hashMark + 1);
+                        String setNum = sub.substring(hashMark + 1, hashMark2);
+
+                        ArrayList<String> setOptions = (ArrayList<String>) variables.get(setNum);
+
+                        int setSize = setOptions.size();
+
+                        String pickedValue = setOptions.get((int)(Math.random() * setSize));
+                        variables.put(variableName, pickedValue);
+                    } else {
+                        String[] variableInformation = sub.trim().split(",");
+                        String variableType = variableInformation[0].trim();
+                        String generationType = variableInformation[1].trim();
+
+                        if (variableType.equals("int")) {
+                            if (generationType.equals("random")) {
+                                int min = Integer.parseInt(variableInformation[2].trim());
+                                int max = Integer.parseInt(variableInformation[3].trim());
+                                int generated = rand.nextInt(max + 1 - min) + min;
+                                variables.put(variableName, generated);
+                                System.out.println(String.format("Q%s-%s: %d", questionNumber, variableName, generated));
+                            }
+                        }
+                    }
                 } else if (nextLine.equals(":Text:")) {
+                    XWPFParagraph paragraph = document.createParagraph();
+                    XWPFRun run = paragraph.createRun();
+                    boolean setQuestionText = false;
+                    String nextCheckLine = null;
+
                     while (file.hasNext()) {
-                        String textLine = file.nextLine();
+                        String textLine = nextCheckLine != null ? nextCheckLine : file.nextLine();
                         if (textLine.equals(":EndText:")) {
                             break;
                         }
 
                         textLine = replaceVariables(textLine);
+
+                        if (!setQuestionText && !textLine.contains("Type: ")) {
+                            setQuestionText = true;
+                            run.setText(questionNumber + ". " + textLine);
+                        } else {
+                            run.setText(textLine);
+                        }
+
+
+                        if (file.hasNextLine()) {
+                            nextCheckLine = file.nextLine();
+                            if (!nextCheckLine.equals(":EndText:")) {
+                                run.addBreak();
+                            }
+                        }
+
                         System.out.println(textLine);
                     }
                 } else if (nextLine.contains("Solution:")) {
                     int colonIndex = nextLine.indexOf(":");
                     String solutionString = nextLine.substring(colonIndex + 1).trim();
                     solutionString = replaceVariables(solutionString);
-                    int solution = EvaluateExpression.evaluateExpression(solutionString);
+                    int result = EvaluateExpression.evaluateExpression(solutionString);
+
+                    // Get units
+                    List<String> units = new ArrayList<>();
+                    nextLine = file.nextLine();
+                    if (nextLine.startsWith("Unit:")) {
+                        String unitString = nextLine.substring(nextLine.indexOf("{") + 1, nextLine.indexOf("}"));
+                        units = Arrays.asList(unitString.split(","));
+                        for (int i = 0; i < units.size(); i++) {
+                            units.set(i, units.get(i).trim());
+                        }
+                    }
+
+
+                    StringBuilder solutionBuilder = new StringBuilder("[");
+                    for (String unit : units) {
+                        solutionBuilder.append(result).append(unit).append(", ");
+                    }
+                    solutionBuilder.setLength(solutionBuilder.length() - 2);  // Remove last comma and space
+                    solutionBuilder.append("]");
+                    String solution = solutionBuilder.toString();
+
+                    XWPFParagraph paragraph = document.createParagraph();
+                    XWPFRun run = paragraph.createRun();
+                    run.setText(String.valueOf(solution));
                     System.out.println(solutionString);
                     System.out.println(solution);
                 }
             }
+
+            document.write(out);
+            System.out.println("quiz.docx generated successfully");
         } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
