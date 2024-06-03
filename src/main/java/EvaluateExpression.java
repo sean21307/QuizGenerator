@@ -42,6 +42,7 @@ public class EvaluateExpression {
                         (operatorStack.peek() == '+' ||
                                 operatorStack.peek() == '-' ||
                                 operatorStack.peek() == '*' ||
+                                operatorStack.peek() == '%' ||
                                 operatorStack.peek() == '/')) {
                     processAnOperator(operandStack, operatorStack);
                 }
@@ -49,10 +50,11 @@ public class EvaluateExpression {
                 // Push the + or - operator into the operator stack
                 operatorStack.push(token.charAt(0));
             }
-            else if (token.charAt(0) == '*' || token.charAt(0) == '/') {
+            else if (token.charAt(0) == '*' || token.charAt(0) == '/' || token.charAt(0) == '%') {
                 // Process all *, / in the top of the operator stack
                 while (!operatorStack.isEmpty() &&
                         (operatorStack.peek() == '*' ||
+                                operatorStack.peek() == '%' ||
                                 operatorStack.peek() == '/')) {
                     processAnOperator(operandStack, operatorStack);
                 }
@@ -101,6 +103,8 @@ public class EvaluateExpression {
             operandStack.push(op2 * op1);
         else if (op == '/')
             operandStack.push(op2 / op1);
+        else if (op == '%')
+            operandStack.push(op2 % op1);
     }
 
     public static String insertBlanks(String s) {
@@ -109,6 +113,7 @@ public class EvaluateExpression {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(' || s.charAt(i) == ')' ||
                     s.charAt(i) == '+' || s.charAt(i) == '-' ||
+                    s.charAt(i) == '%' ||
                     s.charAt(i) == '*' || s.charAt(i) == '/')
                 result += " " + s.charAt(i) + " ";
             else
