@@ -99,7 +99,7 @@ public class Main {
                             }
                         }
 
-                        /*
+
                         else if (variableType.equals("double")) {
                             if (generationType.equals("random")) {
                                 int min = Integer.parseInt(variableInformation[2].trim());
@@ -108,8 +108,8 @@ public class Main {
                                 variables.put(variableName, generated);
                             }
                         }
-                        */
-                         
+                        
+
                     }
                 } else if (nextLine.equals(":Text:")) {
 
@@ -136,7 +136,7 @@ public class Main {
                     int colonIndex = nextLine.indexOf(":");
                     String solutionString = nextLine.substring(colonIndex + 1).trim();
                     solutionString = replaceVariables(solutionString);
-                    int result = EvaluateExpression.evaluateExpression(solutionString);
+                    double result = EvaluateExpression.evaluateExpression(solutionString);
 
                     // Get units
                     List<String> units = new ArrayList<>();

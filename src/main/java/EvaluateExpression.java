@@ -19,9 +19,9 @@ public class EvaluateExpression {
     }
 
     /** Evaluate an expression */
-    public static int evaluateExpression(String expression) {
+    public static double evaluateExpression(String expression) {
         // Create operandStack to store operands
-        Stack<Integer> operandStack = new Stack<>();
+        Stack<Double> operandStack = new Stack<>();
 
         // Create operatorStack to store operators
         Stack<Character> operatorStack = new Stack<>();
@@ -75,7 +75,7 @@ public class EvaluateExpression {
             }
             else { // An operand scanned
                 // Push an operand to the stack
-                operandStack.push(Integer.valueOf(token));
+                operandStack.push(Double.valueOf(token));
             }
         }
 
@@ -91,10 +91,10 @@ public class EvaluateExpression {
     /** Process one operator: Take an operator from operatorStack and
      *  apply it on the operands in the operandStack */
     public static void processAnOperator(
-            Stack<Integer> operandStack, Stack<Character> operatorStack) {
+            Stack<Double> operandStack, Stack<Character> operatorStack) {
         char op = operatorStack.pop();
-        int op1 = operandStack.pop();
-        int op2 = operandStack.pop();
+        double op1 = operandStack.pop();
+        double op2 = operandStack.pop();
         if (op == '+')
             operandStack.push(op2 + op1);
         else if (op == '-')
