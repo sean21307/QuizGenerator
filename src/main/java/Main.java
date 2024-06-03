@@ -160,12 +160,22 @@ public class Main {
 
                     switch (type) {
                         case "long":
+                            result = (long) result;
+                            resultString = String.valueOf((long) result);
+                            break;
+                        case "short":
+                            result = (short) result;
+                            resultString = String.valueOf((short) result);
+                            break;
                         case "int":
                             result = (int) result;
                             resultString = String.valueOf((int) result);
                             break;
                         default:
                             resultString = String.valueOf(new DecimalFormat("#.##").format(result));
+                            if (!resultString.contains(".")) {
+                                resultString += ".0";
+                            }
                             break;
                     }
 
