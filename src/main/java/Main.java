@@ -108,7 +108,7 @@ public class Main {
                                 variables.put(variableName, generated);
                             }
                         }
-                        
+
 
                     }
                 } else if (nextLine.equals(":Text:")) {
@@ -137,6 +137,14 @@ public class Main {
                     String solutionString = nextLine.substring(colonIndex + 1).trim();
                     solutionString = replaceVariables(solutionString);
                     double result = EvaluateExpression.evaluateExpression(solutionString);
+                    String resultString;
+                    String type = "double";
+
+                    // Get type of solution value
+                    nextLine = file.nextLine();
+                    if (nextLine.startsWith("SolutionType:")) {
+                        type = nextLine.substring(nextLine.indexOf(":") + 1).trim();
+                    }
 
                     // Get units
                     List<String> units = new ArrayList<>();
@@ -149,10 +157,21 @@ public class Main {
                         }
                     }
 
+                    switch (type) {
+                        case "long":
+                        case "int":
+                            result = (int) result;
+                            resultString = String.valueOf((int) result);
+                            break;
+                        default:
+                            resultString = String.valueOf(result);
+                            break;
+                    }
+
 
                     StringBuilder solutionBuilder = new StringBuilder("[");
                     for (String unit : units) {
-                        solutionBuilder.append(result).append(unit).append(", ");
+                        solutionBuilder.append(resultString).append(unit).append(", ");
                     }
                     solutionBuilder.setLength(solutionBuilder.length() - 2);  // Remove last comma and space
                     solutionBuilder.append("]");
