@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 
@@ -164,7 +165,7 @@ public class Main {
                             resultString = String.valueOf((int) result);
                             break;
                         default:
-                            resultString = String.valueOf(result);
+                            resultString = String.valueOf(new DecimalFormat("#.##").format(result));
                             break;
                     }
 
