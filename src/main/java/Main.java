@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
-//test change
+
 public class Main {
     static Map<String, Object> variables = new HashMap<String, Object>();
 
@@ -18,6 +18,7 @@ public class Main {
     public static String replaceVariables(String line) {
         int hash1 = line.indexOf("#");
         int hash2 = line.indexOf("#", hash1 + 1);
+
         while (hash1 != -1) {
             String findVar = line.substring(hash1 + 1, hash2);
             Object var = variables.get(findVar);
@@ -39,6 +40,9 @@ public class Main {
         try (Scanner file = new Scanner(new File(filePath));) {
             XWPFDocument document = new XWPFDocument();
             FileOutputStream out = new FileOutputStream("quiz.docx");
+
+            XWPFParagraph paragraph = document.createParagraph();
+            XWPFRun run = paragraph.createRun();
 
             String questionNumber = "";
 
@@ -92,18 +96,26 @@ public class Main {
                                 int max = Integer.parseInt(variableInformation[3].trim());
                                 int generated = rand.nextInt(max + 1 - min) + min;
                                 variables.put(variableName, generated);
-                                System.out.println(String.format("Q%s-%s: %d", questionNumber, variableName, generated));
                             }
                         }
+
+                        /*
+                        else if (variableType.equals("double")) {
+                            if (generationType.equals("random")) {
+                                int min = Integer.parseInt(variableInformation[2].trim());
+                                int max = Integer.parseInt(variableInformation[3].trim());
+                                double generated = (double) rand.nextInt(max + 1 - min) + min;
+                                variables.put(variableName, generated);
+                            }
+                        }
+                        */
+                         
                     }
                 } else if (nextLine.equals(":Text:")) {
-                    XWPFParagraph paragraph = document.createParagraph();
-                    XWPFRun run = paragraph.createRun();
-                    boolean setQuestionText = false;
-                    String nextCheckLine = null;
 
+                    boolean setQuestionText = false;
                     while (file.hasNext()) {
-                        String textLine = nextCheckLine != null ? nextCheckLine : file.nextLine();
+                        String textLine = file.nextLine();
                         if (textLine.equals(":EndText:")) {
                             break;
                         }
@@ -118,14 +130,7 @@ public class Main {
                         }
 
 
-                        if (file.hasNextLine()) {
-                            nextCheckLine = file.nextLine();
-                            if (!nextCheckLine.equals(":EndText:")) {
-                                run.addBreak();
-                            }
-                        }
-
-                        System.out.println(textLine);
+                        run.addBreak();
                     }
                 } else if (nextLine.contains("Solution:")) {
                     int colonIndex = nextLine.indexOf(":");
@@ -153,11 +158,9 @@ public class Main {
                     solutionBuilder.append("]");
                     String solution = solutionBuilder.toString();
 
-                    XWPFParagraph paragraph = document.createParagraph();
-                    XWPFRun run = paragraph.createRun();
                     run.setText(String.valueOf(solution));
-                    System.out.println(solutionString);
-                    System.out.println(solution);
+                    run.addBreak();
+                    run.addBreak();
                 }
             }
 
