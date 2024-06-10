@@ -108,14 +108,16 @@ Question #6:
 
 :Code:
 int #N1# = #R1#;
-boolean #N2# = #R2# <= #R1#
+boolean #N2# = #R2# <= #R1#;
+System.out.println(String.format("%s: [%d]", "#N1#", #N1#));
+System.out.println(String.format("%s: [%b]", "#N2#", #N2#));
 :EndCode:
 
 :Text:
 Type: FMB
 What are variables' values after the following code segment is executed?
 int #N1# = #R1#;
-boolean #N2# = #R2# <= #R1#
+boolean #N2# = #R2# <= #N1#;
 :EndText:
 
 Solution: compile

@@ -2,6 +2,7 @@ import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.xmlbeans.impl.schema.StscChecker;
 
 import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.File;
@@ -38,6 +39,7 @@ public class Main {
         String filePath = "src/main/java/template.txt";
         Random rand = new Random();
 
+        /*
         String code = "int index = 2;\n" +
         "        if (index < 6) {\n" +
                 "            index = index - 1;\n" +
@@ -46,6 +48,7 @@ public class Main {
 
         String[] codeResultArray = Executor.compileAndExecute(code).split(",");
         System.out.println("Result: " + Arrays.toString(codeResultArray));
+         */
 
         Boolean mustExecute = false;
         String executionCode = "";
@@ -159,33 +162,41 @@ public class Main {
                         run.addBreak();
                     }
                 } else if (nextLine.contains("Solution:")) {
-
-                    // Get units
-                    List<String> units = new ArrayList<>();
-                    nextLine = file.nextLine();
-                    if (nextLine.startsWith("Unit:")) {
-                        String unitString = nextLine.substring(nextLine.indexOf("{") + 1, nextLine.indexOf("}"));
-                        units = Arrays.asList(unitString.split(","));
-                        for (int i = 0; i < units.size(); i++) {
-                            units.set(i, units.get(i).trim());
-                        }
-                    }
-
                     if (mustExecute) {
+                        String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
 
+                        run.addCarriageReturn();
+                        for (String solString : solutionStringArray) {
+                            run.setText(solString);
+                            run.addCarriageReturn();
+                        }
+
+                        run.addBreak();
+                        run.addBreak();
 
                     } else {
                         int colonIndex = nextLine.indexOf(":");
                         String solutionString = nextLine.substring(colonIndex + 1).trim();
                         solutionString = replaceVariables(solutionString);
                         double result = EvaluateExpression.evaluateExpression(solutionString);
-                        String type = "double";
                         String resultString;
+                        String type = "double";
 
                         // Get type of solution value
                         nextLine = file.nextLine();
                         if (nextLine.startsWith("SolutionType:")) {
                             type = nextLine.substring(nextLine.indexOf(":") + 1).trim();
+                        }
+
+                        // Get units
+                        List<String> units = new ArrayList<>();
+                        nextLine = file.nextLine();
+                        if (nextLine.startsWith("Unit:")) {
+                            String unitString = nextLine.substring(nextLine.indexOf("{") + 1, nextLine.indexOf("}"));
+                            units = Arrays.asList(unitString.split(","));
+                            for (int i = 0; i < units.size(); i++) {
+                                units.set(i, units.get(i).trim());
+                            }
                         }
 
                         switch (type) {
@@ -209,6 +220,7 @@ public class Main {
                                 break;
                         }
 
+
                         StringBuilder solutionBuilder = new StringBuilder("[");
                         for (String unit : units) {
                             solutionBuilder.append(resultString).append(unit).append(", ");
@@ -217,7 +229,7 @@ public class Main {
                         solutionBuilder.append("]");
                         String solution = solutionBuilder.toString();
 
-                        run.setText(solution);
+                        run.setText(String.valueOf(solution));
                         run.addBreak();
                         run.addBreak();
                     }
