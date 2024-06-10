@@ -38,6 +38,19 @@ public class Main {
         String filePath = "src/main/java/template.txt";
         Random rand = new Random();
 
+        String code = "int index = 2;\n" +
+        "        if (index < 6) {\n" +
+                "            index = index - 1;\n" +
+                "        }\n" +
+                "        System.out.println(index + \",\");\n";
+
+        String[] codeResultArray = Executor.compileAndExecute(code).split(",");
+        System.out.println("Result: " + Arrays.toString(codeResultArray));
+
+        Boolean mustExecute = false;
+        String executionCode = "";
+
+
         try (Scanner file = new Scanner(new File(filePath));) {
             XWPFDocument document = new XWPFDocument();
             FileOutputStream out = new FileOutputStream("quiz.docx");
@@ -56,6 +69,7 @@ public class Main {
                     questionNumber = nextLine.substring(hashIndex + 1, hashIndex + 2);
                 }
 
+                // Create variables
                 if (nextLine.charAt(0) == '#') {
                     String variableName = nextLine.substring(1, 3);
                     int colonIndex = nextLine.indexOf(":");
@@ -67,7 +81,7 @@ public class Main {
                         sub = sub.substring(2, sub.length() - 1);
 
                         String[] split = sub.split(",");
-                        for (String setValueName: split) {
+                        for (String setValueName : split) {
                             setValues.add(setValueName.trim());
                         }
 
@@ -84,9 +98,12 @@ public class Main {
 
                         int setSize = setOptions.size();
 
-                        String pickedValue = setOptions.get((int)(Math.random() * setSize));
+                        String pickedValue = setOptions.get((int) (Math.random() * setSize));
                         variables.put(variableName, pickedValue);
-                    } else {
+                    }
+
+                    // Generate random ints and doubles
+                    else {
                         String[] variableInformation = sub.trim().split(",");
                         String variableType = variableInformation[0].trim();
                         String generationType = variableInformation[1].trim();
@@ -98,10 +115,7 @@ public class Main {
                                 int generated = rand.nextInt(max + 1 - min) + min;
                                 variables.put(variableName, generated);
                             }
-                        }
-
-
-                        else if (variableType.equals("double")) {
+                        } else if (variableType.equals("double")) {
                             if (generationType.equals("random")) {
                                 int min = Integer.parseInt(variableInformation[2].trim());
                                 int max = Integer.parseInt(variableInformation[3].trim());
@@ -109,9 +123,20 @@ public class Main {
                                 variables.put(variableName, generated);
                             }
                         }
-
-
                     }
+                } else if (nextLine.equals(":Code:")) {
+                    mustExecute = true;
+
+                    while (file.hasNext()) {
+                        String textLine = file.nextLine();
+                        if (textLine.equals(":EndCode:")) {
+                            break;
+                        }
+
+                        textLine = replaceVariables(textLine);
+                        executionCode = executionCode.concat(textLine + "\n");
+                    }
+
                 } else if (nextLine.equals(":Text:")) {
 
                     boolean setQuestionText = false;
@@ -134,18 +159,6 @@ public class Main {
                         run.addBreak();
                     }
                 } else if (nextLine.contains("Solution:")) {
-                    int colonIndex = nextLine.indexOf(":");
-                    String solutionString = nextLine.substring(colonIndex + 1).trim();
-                    solutionString = replaceVariables(solutionString);
-                    double result = EvaluateExpression.evaluateExpression(solutionString);
-                    String resultString;
-                    String type = "double";
-
-                    // Get type of solution value
-                    nextLine = file.nextLine();
-                    if (nextLine.startsWith("SolutionType:")) {
-                        type = nextLine.substring(nextLine.indexOf(":") + 1).trim();
-                    }
 
                     // Get units
                     List<String> units = new ArrayList<>();
@@ -158,39 +171,60 @@ public class Main {
                         }
                     }
 
-                    switch (type) {
-                        case "long":
-                            result = (long) result;
-                            resultString = String.valueOf((long) result);
-                            break;
-                        case "short":
-                            result = (short) result;
-                            resultString = String.valueOf((short) result);
-                            break;
-                        case "int":
-                            result = (int) result;
-                            resultString = String.valueOf((int) result);
-                            break;
-                        default:
-                            resultString = String.valueOf(new DecimalFormat("#.##").format(result));
-                            if (!resultString.contains(".")) {
-                                resultString += ".0";
-                            }
-                            break;
+                    if (mustExecute) {
+
+
+                    } else {
+                        int colonIndex = nextLine.indexOf(":");
+                        String solutionString = nextLine.substring(colonIndex + 1).trim();
+                        solutionString = replaceVariables(solutionString);
+                        double result = EvaluateExpression.evaluateExpression(solutionString);
+                        String type = "double";
+                        String resultString;
+
+                        // Get type of solution value
+                        nextLine = file.nextLine();
+                        if (nextLine.startsWith("SolutionType:")) {
+                            type = nextLine.substring(nextLine.indexOf(":") + 1).trim();
+                        }
+
+                        switch (type) {
+                            case "long":
+                                result = (long) result;
+                                resultString = String.valueOf((long) result);
+                                break;
+                            case "short":
+                                result = (short) result;
+                                resultString = String.valueOf((short) result);
+                                break;
+                            case "int":
+                                result = (int) result;
+                                resultString = String.valueOf((int) result);
+                                break;
+                            default:
+                                resultString = String.valueOf(new DecimalFormat("#.##").format(result));
+                                if (!resultString.contains(".")) {
+                                    resultString += ".0";
+                                }
+                                break;
+                        }
+
+                        StringBuilder solutionBuilder = new StringBuilder("[");
+                        for (String unit : units) {
+                            solutionBuilder.append(resultString).append(unit).append(", ");
+                        }
+                        solutionBuilder.setLength(solutionBuilder.length() - 2);  // Remove last comma and space
+                        solutionBuilder.append("]");
+                        String solution = solutionBuilder.toString();
+
+                        run.setText(solution);
+                        run.addBreak();
+                        run.addBreak();
                     }
 
 
-                    StringBuilder solutionBuilder = new StringBuilder("[");
-                    for (String unit : units) {
-                        solutionBuilder.append(resultString).append(unit).append(", ");
-                    }
-                    solutionBuilder.setLength(solutionBuilder.length() - 2);  // Remove last comma and space
-                    solutionBuilder.append("]");
-                    String solution = solutionBuilder.toString();
 
-                    run.setText(String.valueOf(solution));
-                    run.addBreak();
-                    run.addBreak();
+
                 }
             }
 

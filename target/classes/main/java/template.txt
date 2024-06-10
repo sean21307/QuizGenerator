@@ -96,4 +96,3 @@ double #N1# = #R1# / #R2# * (#R3# - #R4#);
 Solution: #R1# / #R2# * (#R3# - #R4#)
 SolutionType: double
 Unit: {}
-
