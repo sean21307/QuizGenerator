@@ -121,3 +121,38 @@ boolean #N2# = #R2# <= #N1#;
 :EndText:
 
 Solution: compile
+
+
+Question #7:
+
+#R1#: int, random, 2, 8
+#R2#: int, random, 2, 10
+#S1#: {index}
+#N1#: from #S1#
+
+:Code:
+int #N1# = #R1#;
+if (#N1# < #R2#)
+{
+    System.out.println(String.format("output of the code: [%d]", #N1#));
+    #N1# = #N1# - 1;
+} else {
+    System.out.println(String.format("output of the code: [%s]", "nothing"));
+}
+System.out.println(String.format("#N1#: [%d]", #N1#));
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+int #N1# = #R1#;
+if (#N1# < #R2#)
+{
+    System.out.print(#N1#);
+    #N1# = #N1# - 1;
+}
+If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile

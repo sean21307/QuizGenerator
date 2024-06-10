@@ -70,6 +70,7 @@ public class Main {
                 if (nextLine.contains("Question #")) {
                     int hashIndex = nextLine.indexOf("#");
                     questionNumber = nextLine.substring(hashIndex + 1, hashIndex + 2);
+                    executionCode = "";
                 }
 
                 // Create variables
