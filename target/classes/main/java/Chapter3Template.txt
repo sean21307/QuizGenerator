@@ -1,0 +1,166 @@
+Question #1:
+
+#R1#: int, random, 2, 8
+#R2#: int, random, 2, 10
+#S1#: {quantity}
+#S2#: {f}
+#N1#: from #S1#
+#N2#: from #S2#
+
+:Code:
+int #N1# = #R1#;
+boolean #N2# = #R2# <= #R1#;
+System.out.println(String.format("%s: [%d]", "#N1#", #N1#));
+System.out.println(String.format("%s: [%b]", "#N2#", #N2#));
+:EndCode:
+
+:Text:
+Type: FMB
+What are variables' values after the following code segment is executed?
+int #N1# = #R1#;
+boolean #N2# = #R2# <= #N1#;
+:EndText:
+
+Solution: compile
+
+
+
+Question #2:
+
+#S1#: {tall, short}
+#N1#: from #S1#
+
+:Code:
+boolean #N1# = false || true && false && true;
+System.out.println(String.format("%s: [%b]", "#N1#", #N1#));
+:EndCode:
+
+:Text:
+Type: FMB
+What are variables' values after the following code segment is executed?
+boolean #N1# = false || true && false && true;
+:EndText:
+
+Solution: compile
+
+
+Question #3:
+
+#R1#: int, random, 2, 8
+#R2#: int, random, 2, 10
+#S1#: {index}
+#N1#: from #S1#
+
+:Code:
+int #N1# = #R1#;
+if (#N1# < #R2#)
+{
+    System.out.println(String.format("output of the code: [%d]", #N1#));
+    #N1# = #N1# - 1;
+} else {
+    System.out.println(String.format("output of the code: [%s]", "nothing"));
+}
+System.out.println(String.format("#N1#: [%d]", #N1#));
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+int #N1# = #R1#;
+if (#N1# < #R2#)
+{
+    System.out.print(#N1#);
+    #N1# = #N1# - 1;
+}
+If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile
+
+
+
+Question #4:
+
+#R1#: int, random, 1, 5
+#R2#: int, random, 2, 9
+#R3#: int, random, 10, 15
+#S1#: {x}
+#S2#: {y}
+#S3#: {z}
+#N1#: from #S1#
+#N2#: from #S2#
+#N3#: from #S3#
+
+:Code:
+int #N1# = #R1#;
+int #N2# = #R2#;
+int #N3# = #R3#;
+
+if (#N2# % #N1# == 0)
+{
+    if (#N1# >= #N3#)
+    {
+        #N3# = #N1# * #N2#;
+    }
+    else
+    {
+        #N3# = #N1# * #N1#;
+    }
+}
+else
+{
+    if (#N3# >= #N1# + #N2#)
+    {
+        if (#N1# >= #N2#)
+        {
+            #N2# = #N2# * #N2#;
+        }
+        else
+        {
+            #N3# = #N3# * #N3#;
+        }
+    }
+}
+
+System.out.println(String.format("#N1#: [%d]", #N1#));
+System.out.println(String.format("#N2#: [%d]", #N2#));
+System.out.println(String.format("#N3#: [%d]", #N3#));
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the variables' values after the following code segment is executed.
+
+int #N1# = #R1#;
+int #N2# = #R2#;
+int #N3# = #R3#;
+
+if (#N2# % #N1# == 0)
+{
+    if (#N1# >= #N3#)
+    {
+        #N3# = #N1# * #N2#;
+    }
+    else
+    {
+        #N3# = #N1# * #N1#;
+    }
+}
+else
+{
+    if (#N3# >= #N1# + #N2#)
+    {
+        if (#N1# >= #N2#)
+        {
+            #N2# = #N2# * #N2#;
+        }
+        else
+        {
+            #N3# = #N3# * #N3#;
+        }
+    }
+}
+:EndText:
+
+Solution: compile

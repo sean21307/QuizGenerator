@@ -34,9 +34,9 @@ public class Main {
         return line;
     }
 
-    
-    public static void main(String[] args) {
-        String filePath = "src/main/java/template.txt";
+    public static void GenerateQuizFile(String name) {
+        String filePath = String.format("src/main/java/%s.txt", name);
+        String outputFileName = String.format("%s.docx", name).replace("Template", "Quiz");
         Random rand = new Random();
 
         boolean mustExecute = false;
@@ -45,7 +45,7 @@ public class Main {
 
         try (Scanner file = new Scanner(new File(filePath));) {
             XWPFDocument document = new XWPFDocument();
-            FileOutputStream out = new FileOutputStream("quiz.docx");
+            FileOutputStream out = new FileOutputStream(outputFileName);
 
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
@@ -60,6 +60,7 @@ public class Main {
                     int hashIndex = nextLine.indexOf("#");
                     questionNumber = nextLine.substring(hashIndex + 1, hashIndex + 2);
                     executionCode = "";
+                    mustExecute = false;
                 }
 
                 // Create variables
@@ -113,6 +114,7 @@ public class Main {
                                 int min = Integer.parseInt(variableInformation[2].trim());
                                 int max = Integer.parseInt(variableInformation[3].trim());
                                 double generated = (double) rand.nextInt(max + 1 - min) + min;
+                                generated += (rand.nextInt(9) + 1) / 10.0;
                                 variables.put(variableName, generated);
                             }
                         }
@@ -153,6 +155,7 @@ public class Main {
                     }
                 } else if (nextLine.contains("Solution:")) {
                     if (mustExecute) {
+                        System.out.println(executionCode);
                         String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
 
                         run.addCarriageReturn();
@@ -226,10 +229,17 @@ public class Main {
             }
 
             document.write(out);
-            System.out.println("quiz.docx generated successfully");
+            System.out.println(String.format("%s generated successfully", outputFileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public static void main(String[] args) {
+        GenerateQuizFile("Chapter2Template");
+        GenerateQuizFile("Chapter3Template");
+        GenerateQuizFile("Chapter4Template");
 
     }
 }

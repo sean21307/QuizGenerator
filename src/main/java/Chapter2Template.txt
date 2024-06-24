@@ -1,0 +1,92 @@
+Question #1:
+
+#R1#: int, random, 1, 10
+#R2#: int, random, 2, 8
+#R3#: int, random, 1, 3
+#S1#: {quantity, amount, total, result}
+#N1#: from #S1#
+
+:Text:
+Type: FMB
+What are variables' values after the following code segment is executed?
+long #N1# = #R1# + #R2# / #R3#;
+
+Pay attention to how to specify a long value.
+:EndText:
+
+Solution: #R1# + #R2# / #R3#
+SolutionType: long
+Unit: {L, l}
+
+
+
+Question #2:
+
+#R1#: int, random, 1, 5
+#R2#: int, random, 7, 10
+#R3#: int, random, 2, 9
+#S1#: {today}
+#S2#: {yesterday}
+#S3#: {tomorrow}
+#N1#: from #S1#
+#N2#: from #S2#
+#N3#: from #S3#
+
+:Code:
+int #N1# = #R1#;
+int #N2# = #R2#;
+int #N3# = #R3#;
+
+#N2# = #N1#;
+#N1# = #N3#;
+#N3# = #N2# + #N1#;
+#N1# = #N2# + #N3#;
+#N2# = #N1#;
+#N1# = #N3#;
+#N3# = #N1# + #N2#;
+
+System.out.println(String.format("#N1#: [%d]", #N1#));
+System.out.println(String.format("#N2#: [%d]", #N2#));
+System.out.println(String.format("#N3#: [%d]", #N3#));
+
+:EndCode:
+
+:Text:
+Type: FMB
+What are variables' values after the following code segment is executed?
+
+int #N1# = #R1#;
+int #N2# = #R2#;
+int #N3# = #R3#;
+#N2# = #N1#;
+#N1# = #N3#;
+#N3# = #N2# + #N1#;
+#N1# = #N2# + #N3#;
+#N2# = #N1#;
+#N1# = #N3#;
+#N3# = #N1# + #N2#;
+:EndText:
+
+Solution: compile
+
+
+
+Question #3:
+
+#R1#: double, random, 2, 8
+#R2#: int, random, 2, 8
+#R3#: int, random, 50, 100
+#R4#: int, random, 2, 10
+#S1#: {x, n, m}
+#N1#: from #S1#
+
+:Text:
+Type: FMB
+What are variables' values after the following code segment is executed?
+double #N1# = #R1# / #R2# * (#R3# - #R4#);
+
+:EndText:
+
+Solution: #R1# / #R2# * (#R3# - #R4#)
+SolutionType: double
+Unit: {}

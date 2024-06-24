@@ -1,0 +1,105 @@
+Question #1:
+
+#R1#: int, random, 1, 5
+#R2#: int, random, 7, 10
+#S1#: {u, a}
+#S2#: {v, b}
+#N1#: from #S1#
+#N2#: from #S2#
+
+:Code:
+int #N1#;
+int #N2# = #R1#;
+String result = "";
+
+for (#N1# = #R2#; #N1# > #N2#; #N1#--)
+{
+    result += #N1# + "-";
+    result += #N2# + "$";
+    #N2# += 2;
+}
+
+if (result.isEmpty()) {
+    result = "nothing";
+}
+
+System.out.println(String.format("Output of the program: [%s]", result));
+System.out.println(String.format("%s: [%d]", "#N1#", #N1#));
+System.out.println(String.format("%s: [%d]", "#N2#", #N2#));
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+int #N1#;
+int #N2# = #R1#;
+
+for (#N1# = #R2#; #N1# > #N2#; #N1#--)
+{
+    System.out.print(#N1# + "-");
+    System.out.print(#N2# + "$");
+    #N2# += 2;
+}
+
+Note:
+(1) If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+(2) If a variable is out of scope after the code segment is executed, please specify "out of scope" (no quotes) in the blank for the variable.
+:EndText:
+
+Solution: compile
+
+
+
+Question #2:
+
+#R1#: double, random, 1, 4
+#R2#: double, random, 4, 8
+#S1#: {amount}
+#S2#: {count}
+#N1#: from #S1#
+#N2#: from #S2#
+
+:Code:
+double #N1# = #R1#;
+double #N2# = #R2#;
+String result = "";
+
+while (#N1# < #N2#)
+{
+    result += #N1# + "-";
+    result += #N2# + "-";
+    #N1# += 1.0;
+    #N2# -= 1.0;
+}
+
+if (result.isEmpty()) {
+    result = "nothing";
+}
+
+System.out.println(String.format("Output of the program: [%s]", result));
+System.out.println(String.format("%s: [%.2f]", "#N1#", #N1#));
+System.out.println(String.format("%s: [%.2f]", "#N2#", #N2#));
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+double #N1# = #R1#;
+double #N2# = #R2#;
+
+while (#N1# < #N2#)
+{
+    System.out.print(#N1# + "-");
+    System.out.print(#N2# + "-");
+    #N1# += 1.0;
+    #N2# -= 1.0;
+}
+
+If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile
