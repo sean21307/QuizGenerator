@@ -34,23 +34,12 @@ public class Main {
         return line;
     }
 
-
+    
     public static void main(String[] args) {
         String filePath = "src/main/java/template.txt";
         Random rand = new Random();
 
-        /*
-        String code = "int index = 2;\n" +
-        "        if (index < 6) {\n" +
-                "            index = index - 1;\n" +
-                "        }\n" +
-                "        System.out.println(index + \",\");\n";
-
-        String[] codeResultArray = Executor.compileAndExecute(code).split(",");
-        System.out.println("Result: " + Arrays.toString(codeResultArray));
-         */
-
-        Boolean mustExecute = false;
+        boolean mustExecute = false;
         String executionCode = "";
 
 
@@ -221,7 +210,6 @@ public class Main {
                                 break;
                         }
 
-
                         StringBuilder solutionBuilder = new StringBuilder("[");
                         for (String unit : units) {
                             solutionBuilder.append(resultString).append(unit).append(", ");
@@ -230,21 +218,15 @@ public class Main {
                         solutionBuilder.append("]");
                         String solution = solutionBuilder.toString();
 
-                        run.setText(String.valueOf(solution));
+                        run.setText(solution);
                         run.addBreak();
                         run.addBreak();
                     }
-
-
-
-
                 }
             }
 
             document.write(out);
             System.out.println("quiz.docx generated successfully");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

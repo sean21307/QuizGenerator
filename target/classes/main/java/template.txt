@@ -19,6 +19,8 @@ SolutionType: long
 Unit: {L, l}
 
 
+
+
 Question #2:
 
 #R1#: int, random, 2, 8
@@ -37,6 +39,8 @@ Pay attention to how to specify a double value.
 Solution: #R1# * #R2#
 SolutionType: double
 Unit: {}
+
+
 
 
 Question #3:
@@ -58,6 +62,8 @@ SolutionType: int
 Unit: { }
 
 
+
+
 Question #4:
 
 #R1#: int, random, 2, 8
@@ -75,6 +81,8 @@ int #N1# = #R1# % #R2#;
 Solution: #R1# % #R2#
 SolutionType: int
 Unit: { }
+
+
 
 
 Question #5:
@@ -96,6 +104,9 @@ double #N1# = #R1# / #R2# * (#R3# - #R4#);
 Solution: #R1# / #R2# * (#R3# - #R4#)
 SolutionType: double
 Unit: {}
+
+
+
 
 Question #6:
 
@@ -121,6 +132,8 @@ boolean #N2# = #R2# <= #N1#;
 :EndText:
 
 Solution: compile
+
+
 
 
 Question #7:
@@ -153,6 +166,61 @@ if (#N1# < #R2#)
     #N1# = #N1# - 1;
 }
 If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile
+
+
+
+
+Question #8:
+
+#R1#: int, random, 1, 5
+#R2#: int, random, 7, 10
+#S1#: {u, a}
+#S2#: {v, b}
+#N1#: from #S1#
+#N2#: from #S2#
+
+:Code:
+int #N1#;
+int #N2# = #R1#;
+String result = "";
+
+for (#N1# = #R2#; #N1# > #N2#; #N1#--)
+{
+    result += #N1# + "-";
+    result += #N2# + "$";
+    #N2# += 2;
+}
+
+if (result.isEmpty()) {
+    result = "nothing";
+}
+
+System.out.println(String.format("Output of the program: [%s]", result));
+System.out.println(String.format("%s: [%d]", "#N1#", #N1#));
+System.out.println(String.format("%s: [%d]", "#N2#", #N2#));
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+int #N1#;
+int #N2# = #R1#;
+
+for (#N1# = #R2#; #N1# > #N2#; #N1#--)
+{
+    System.out.print(#N1# + "-");
+    System.out.print(#N2# + "$");
+    #N2# += 2;
+}
+
+Note:
+(1) If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+(2) If a variable is out of scope after the code segment is executed, please specify "out of scope" (no quotes) in the blank for the variable.
 :EndText:
 
 Solution: compile
