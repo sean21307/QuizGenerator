@@ -27,7 +27,7 @@ Solution: compile
 
 Question #2:
 
-#S1#: {tall, short}
+#S1#: {tall,small}
 #N1#: from #S1#
 
 :Code:
