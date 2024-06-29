@@ -7,11 +7,15 @@ import java.util.Arrays;
 
 public class Executor {
     public static String compileAndExecute(String code) {
-        code = "public class DynamicCode {\n" +
-                "    public static void main(String[] args) {\n" +
-                code +
-                "    }\n" +
-                "}\n";
+        if (!code.contains("class")) {
+            code = "public class DynamicCode {\n" +
+                    "    public static void main(String[] args) {\n" +
+                    code +
+                    "    }\n" +
+                    "}\n";
+        }
+
+
 
         // Prepare the compiler
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();

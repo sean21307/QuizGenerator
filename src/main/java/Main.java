@@ -235,11 +235,11 @@ public class Main {
         }
     }
 
-
+    
     public static void main(String[] args) {
         GenerateQuizFile("Chapter2Template");
         GenerateQuizFile("Chapter3Template");
         GenerateQuizFile("Chapter4Template");
-
+        GenerateQuizFile("Chapter5Template");
     }
 }

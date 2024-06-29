@@ -1,0 +1,197 @@
+Question #1:
+
+#R1#: double, random, 40, 60
+#S1#: {message}
+#S2#: {score, points, amount}
+#S3#: {Linda, John, Dan, Joe}
+#N1#: from #S1#
+#N2#: from #S2#
+#N3#: from #S3#
+
+:Code:
+public class DynamicCode
+{
+  private static String result = "";
+
+  public static void talk()
+  {
+    String #N1# = "hello";
+    result += #N1#;
+  }
+
+  public static void run()
+  {
+    double #N2# = #R1#;
+    result += String.valueOf(#N2#);
+  }
+
+  public static void main(String[] args)
+  {
+    String name = "#N3#";
+    talk();
+    run();
+    result += name;
+
+    System.out.println(String.format("Output of the program: [%s]", result));
+  }
+}
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output of the program.
+
+public class TalkRun
+{
+  String result = "";
+
+  public static void talk()
+  {
+    String #N1# = "hello";
+    System.out.print(#N1#);
+  }
+
+  public static void run()
+  {
+    double #N2# = #R1#;
+    System.out.print(#N2#);
+  }
+
+  public static void main(String[] args)
+  {
+    String name = "#N3#";
+    talk();
+    run();
+    System.out.print(name);
+  }
+}
+
+Note that you will need to pay attention to how a double value will be printed out.
+:EndText:
+
+Solution: compile
+
+
+
+
+Question #2:
+
+#R1#: int, random, 10, 30
+#S1#: {Linda, John, Dan, Joe}
+#N1#: from #S1#
+
+:Code:
+public class DynamicCode
+{
+
+  public static String hello(String name, int age)
+  {
+    String greeting = "Hello " + name;
+    if (age < 18)
+    {
+      greeting = greeting + "!";
+    }
+    else
+    {
+      greeting = greeting + "! Safety first.";
+    }
+
+    return greeting;
+  }
+
+  public static void main(String[] args)
+  {
+    String message = hello("#N1#", #R1#);
+    System.out.println(String.format("Output of the program: [%s]", message));
+  }
+}
+
+:EndCode:
+
+:Text:
+Type: FMB
+Read the method definition below:
+
+public static String hello(String name, int age)
+{
+  String greeting = "Hello " + name;
+  if (age < 18)
+  {
+    greeting = greeting + "!";
+  }
+  else
+  {
+    greeting = greeting + "! Safety first.";
+  }
+
+  return greeting;
+}
+
+Given the code above, what is printed by the following code segment:
+String message = hello("#N1#", #R1#);
+System.out.println(message);
+:EndText:
+
+Solution: compile
+
+
+
+
+
+Question #3:
+
+#R1#: double, random, 5, 100
+
+:Code:
+public class DynamicCode
+{
+  public static double join(double score)
+  {
+    if (score < 50)
+    {
+      score = score / 2;
+      return score;
+    }
+    else
+    {
+      return 100.0;
+    }
+  }
+
+
+  public static void main(String[] args)
+  {
+    System.out.println(String.format("Output of the program: [%.2f]", join(#R1#)));
+  }
+}
+
+:EndCode:
+
+:Text:
+Type: FMB
+Read the method definition below:
+public class Joining
+{
+  public static double join(double score)
+  {
+    if (score < 50)
+    {
+      score = score / 2;
+      return score;
+    }
+    else
+    {
+      return 100.0;
+    }
+  }
+
+
+  public static void main(String[] args)
+  {
+    System.out.print(join(#R1#));
+  }
+}
+:EndText:
+
+Solution: compile
