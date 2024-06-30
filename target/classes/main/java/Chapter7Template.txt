@@ -1,0 +1,112 @@
+Question #1:
+
+#R1#: int, random, 2, 9
+#R2#: int, random, 2, 9
+#R3#: int, random, 2, 9
+#R4#: int, random, 2, 9
+#R5#: int, random, 2, 9
+
+
+:Code:
+
+public class DynamicCode
+{
+    class Service
+    {
+        String result = "";
+        int length;
+
+        public Service()
+        {
+            this.length = #R1#;
+            result += this.length + "-";
+        }
+
+
+        public Service(int length)
+        {
+            if (length > #R2#) {
+                length = #R2#;
+            }
+
+            this.length = length;
+            this.length++;
+            result += this.length + "-";
+        }
+
+        public String getResult() {
+            return this.result;
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        DynamicCode outerInstance = new DynamicCode();
+
+        Service arrange = outerInstance.new Service();
+        Service clean = outerInstance.new Service(#R3#);
+        arrange.length += #R4#;
+        clean.length += #R5#;
+
+        String result = arrange.getResult() + clean.getResult();
+        result += arrange.length + "-";
+        result += clean.length + "-";
+
+        if (!result.isEmpty()) {
+            System.out.println(String.format("Output of the program: [%s]", result));
+        } else {
+            System.out.println("[nothing]");
+        }
+    }
+}
+:EndCode:
+
+:Text:
+Type: FMB
+Given the following class definition,
+
+public class Service
+{
+
+    int length;
+
+    public Service()
+    {
+        this.length = #R1#;
+        System.out.print(this.length + "-");
+    }
+
+
+    public Service(int length)
+    {
+        if (length > #R2#) {
+            length = #R2#;
+        }
+
+        this.length = length;
+        this.length++;
+        System.out.print(this.length + "-");
+    }
+}
+
+What is the output of the following program?
+
+public class Conductor
+{
+    public static void main(String[] args)
+    {
+        Service arrange = new Service();
+        Service clean = new Service(#R3#);
+        arrange.length += #R4#;
+        clean.length += #R5#;
+        System.out.print(arrange.length + "-");
+        System.out.print(clean.length + "-");
+    }
+}
+
+If there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile
+
+
