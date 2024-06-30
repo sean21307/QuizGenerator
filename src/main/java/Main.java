@@ -25,6 +25,8 @@ public class Main {
         generateQuizFile("Chapter3Template");
         generateQuizFile("Chapter4Template");
         generateQuizFile("Chapter5Template");
+        generateQuizFile("Chapter6Template");
+        //generateQuizFile("Chapter7Template");
     }
 
     // Replaces variable symbols with the generated values (#R1# -> 2)

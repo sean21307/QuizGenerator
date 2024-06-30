@@ -1,0 +1,130 @@
+Question #1:
+
+#R1#: int, random, 1, 8
+
+:Code:
+int[] collection = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+int position = #R1#;
+System.out.print("[" + collection[position - 1] + "-");
+System.out.print(collection[position] + "-");
+System.out.print(collection[position + 1] + "]");
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output of the following code segment.
+
+int[] collection = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+int position = #R1#;
+System.out.print(collection[position - 1] + "-");
+System.out.print(collection[position] + "-");
+System.out.print(collection[position + 1]);
+
+Note that if there is no output, please specify "nothing" (no quotes) in the blank for the output.
+:EndText:
+
+Solution: compile
+
+
+
+Question #2:
+
+#R1#: int, random, 3, 8
+#R2#: int, random, 0, 2
+#R3#: int, random, 4, 7
+#S1#: {amount}
+#S2#: {count}
+#N1#: from #S1#
+#N2#: from #S2#
+
+:Code:
+int[] group = new int[#R1#];
+for (int index = #R2#; index < group.length; index++)
+{
+  group[index] = #R3#;
+}
+
+
+for (int i = 0; i < group.length; i++) {
+    System.out.println(String.format("group[%d]: [%d]", i, group[i]));
+}
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the array's content after the following code segment is executed.
+int[] group = new int[#R1#];
+for (int index = #R2#; index <= group.length; index++)
+{
+  group[index] = #R3#;
+}
+:EndText:
+
+Solution: compile
+
+
+
+
+
+Question #3:
+
+#R1#: int, random, 2, 9
+#R2#: int, random, 2, 9
+#R3#: int, random, 2, 9
+#R4#: int, random, 2, 9
+#R5#: int, random, 2, 9
+#R6#: int, random, 2, 9
+#R7#: int, random, 0, 5
+#R8#: int, random, 0, 5
+
+:Code:
+public class DynamicCode
+{
+  private static String result = "";
+
+  public static void f(int[] matrix, int depth, int height)
+    {
+      matrix[depth] = height;
+      matrix[height] = depth;
+    }
+
+    public static void main(String[] args)
+    {
+      int[] inventory = {#R1#, #R2#, #R3#, #R4#, #R5#, #R6#};
+      int r = #R7#;
+      f(inventory, #R8#, r);
+      for (int index = 0; index < inventory.length; index ++)
+      {
+        result += inventory[index] + "-";
+      }
+
+      System.out.println(String.format("Output of the program: [%s]", result));
+    }
+}
+
+:EndCode:
+
+:Text:
+Type: FMB
+Specify the output of the program after the main method is executed.
+
+public static void f(int[] matrix, int depth, int height)
+{
+  matrix[depth] = height;
+  matrix[height] = depth;
+}
+
+public static void main(String[] args)
+{
+  int[] inventory = {#R1#, #R2#, #R3#, #R4#, #R5#, #R6#};
+  int r = #R7#;
+  f(inventory, #R8#, r);
+  for (int index = 0; index < inventory.length; index ++)
+  {
+    System.out.print(inventory[index] + "-");
+  }
+}
+:EndText:
+
+Solution: compile
