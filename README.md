@@ -26,7 +26,7 @@ If the question requires code to be compiled and run, the format is slightly dif
 
 Compile Question Template Format (ignore parenthesis):
 
-```
+```java
 Question #1:
 
 #R1#: double, random, 40, 60
