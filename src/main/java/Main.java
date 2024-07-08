@@ -21,12 +21,13 @@ public class Main {
     static Map<String, Object> variables = new HashMap<>();
 
     public static void main(String[] args) {
-        generateQuizFile("Chapter2Template");
-        generateQuizFile("Chapter3Template");
-        generateQuizFile("Chapter4Template");
-        generateQuizFile("Chapter5Template");
-        generateQuizFile("Chapter6Template");
-        generateQuizFile("Chapter7Template");
+        generateQuizFile("template");
+        //generateQuizFile("Chapter2Template");
+        //generateQuizFile("Chapter3Template");
+        //generateQuizFile("Chapter4Template");
+        //generateQuizFile("Chapter5Template");
+        //generateQuizFile("Chapter6Template");
+        //generateQuizFile("Chapter7Template");
     }
 
     // Replaces variable symbols with the generated values (#R1# -> 2)
@@ -37,6 +38,10 @@ public class Main {
         while (hash1 != -1) {
             String findVar = line.substring(hash1 + 1, hash2);
             Object var = variables.get(findVar);
+
+            if (var == null) {
+                throw new IllegalArgumentException(findVar + " is not a defined variable");
+            }
 
             line = line.replace("#" + findVar + "#", var.toString());
 
