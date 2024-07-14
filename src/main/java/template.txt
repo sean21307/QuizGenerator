@@ -11,7 +11,6 @@ Question #8:
 :Code:
 public class DynamicCode {
     public static void main(String[] args) {
-        String correctResult = "";
         String result = "";
 
         result += "#N1##R1#-#R2#" + "#N2#" + (#R1# * #R3#) + "-" + (#R2# * #R3#) + "#N2#" + (#R3# * #R1# * #R3# * #R2#) + "-" + (#R2# * #R3#) + "#N1##R1#-#R2#: 100%\n";
@@ -61,3 +60,192 @@ Note that if there is no output, please choose "nothing"
 :EndText:
 
 Solution: compile
+
+
+
+
+Question #5:
+
+#R1#: int, random, 1, 10
+#R2#: int, random, 1, 10
+
+:Code:
+public class DynamicCode {
+    class Container
+    {
+        int type;
+        int beans;
+
+        public Container()
+        {
+            //System.out.print("a");
+            this.type = 0;
+            this.beans = 0;
+        }
+
+        public Container(int type, int beans)
+        {
+            //System.out.print("b");
+            this.type = type;
+            this.beans = beans;
+        }
+
+        public String toString()
+        {
+            return this.type + "-" + this.beans;
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        DynamicCode outerInstance = new DynamicCode();
+
+        Container red = outerInstance.new Container();
+        Container green = outerInstance.new Container(#R1#, #R2#);
+
+
+        String result = "";
+
+        result += "ab0-0$#R1#-#R2#: 100%\n";
+        result += "0-0$#R1#-#R2#: 80%\n";
+        result += "b0-0$#R1#-#R2#: 90%\n";
+        result += "a0-0$b#R1#-#R2#: 50%\n";
+        result += "a$0-0b#R1#-#R2#: 50%\n";
+        result += "ab#R1#-#R2#: 50%\n";
+        result += "a$#R1#-#R2#: 25%\n";
+        result += "ab0$green: 20%\n";
+        result += "#R1#-#R2#: 25%\n";
+        result += "aba$b: 20%\n";
+        result += "a$b: 0%\n";
+        result += "#R1#$#R2#: 0%\n";
+        result += "red$green: 0%\n";
+        result += "red$2green: 0%\n";
+        result += "green-: 0%\n";
+        result += "green: 0%\n";
+        result += "Container()$ Container(#R1#, #R2#): 0%\n";
+        result += "nothing: 0%\n";
+
+        System.out.println(result);
+    }
+}
+
+
+:EndCode:
+
+:Text:
+Read the method definition below:
+
+public class Container
+{
+    int type;
+    int beans;
+
+    public Container()
+    {
+        System.out.print("a");
+        this.type = 0;
+        this.beans = 0;
+    }
+
+    public Container(int type, int beans)
+    {
+        System.out.print("b");
+        this.type = type;
+        this.beans = beans;
+    }
+
+    public String toString()
+    {
+        return this.type + "-" + this.beans;
+    }
+}
+
+What is the output of the following code segment?
+
+    Container red = new Container();
+    Container green = new Container(#R1#, #R2#);
+    System.out.print(red + "$");
+    System.out.print(green);
+
+
+Note that if there is no output, please choose "nothing"
+:EndText:
+
+Solution: compile
+
+
+
+Question #14:
+
+#R1#: int, random, 2, 8
+#R2#: int, random, 2, 8
+#R3#: int, random, 8, 12
+
+:Code:
+public class DynamicCode {
+    public static void main(String[] args) {
+        String result = "";
+
+        result += (#R1# + #R2#) + "-" + (#R3# * 2) + ": 100%\n";
+        result += (#R1# + #R2#) + "-" + (#R1# * 2) + ": 50%\n";
+        result += (#R1# + #R2#) + "-" + (#R1# * #R3#) + ": 50%\n";
+        result += (#R1# + #R2#) + " #R1#-" + (#R2# * #R3#) + ": 0%\n";
+        result += (#R1# + #R2#) + "-" + (#R3#) + ": 50%\n";
+        result += (#R1# + #R2# + 2) + "-" + (#R3# * 2) + ": 80%\n";
+        result += "#R1##R2#-" + (#R3# * 2) + ": 80%\n";
+        result += "1-" + (#R3# * 2) + ": 50%\n";
+        result += "#R1#-" + (#R3# * 2) + ": 50%\n";
+        result += (#R1# * #R3#) + "-" + (#R2# * #R3#) + ": 0%\n";
+        result += ((#R1# + #R2#) * 2) + ": 0%\n";
+        result += (#R1# * 2) + ": 0%\n";
+        result += (#R1#) + ": 0%\n";
+        result += "#R1#-#R2#: 0%\n";
+        result += "6-4: 0%\n";
+
+        System.out.println(result);
+    }
+}
+
+:EndCode:
+
+:Text:
+Read the following class definition,
+
+public class Pantry
+{
+
+    private int stages;
+    private int height;
+
+    public Pantry(int stages, int height) {
+        this.stages = stages;
+        this.height = height;
+    }
+
+    public int get() {
+        return this.stages + this.height;
+    }
+
+    public static int calc(int stages)
+    {
+        return stages * 2;
+    }
+
+}
+
+What is the output of the following code segment?
+
+Pantry food = new Pantry(#R1#, #R2#);
+int x = food.get();
+System.out.print(x + "-");
+int y = Pantry.calc(#R3#);
+System.out.print(y);
+
+Note that if there is no output, please choose "nothing"
+:EndText:
+
+Solution: compile
+
+
+
