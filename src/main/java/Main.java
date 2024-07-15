@@ -1,16 +1,18 @@
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
 public class Main {
     static final String QUESTION_PREFIX = "Question #";
+    static final String QUESTION_TYPE_PREFIX = "QuestionType:";
     static final String CODE_SECTION = ":Code:";
     static final String END_CODE_SECTION = ":EndCode:";
     static final String TEXT_SECTION = ":Text:";
@@ -28,6 +30,32 @@ public class Main {
         //generateQuizFile("Chapter5Template");
         //generateQuizFile("Chapter6Template");
         //generateQuizFile("Chapter7Template");
+
+        File file = new File("testCsv.csv");
+        try {
+            // create FileWriter object with file as parameter
+            FileWriter outputfile = new FileWriter(file);
+
+            // create CSVWriter object filewriter object as parameter
+            CSVWriter writer = new CSVWriter(outputfile);
+
+            // adding header to csv
+            String[] header = { "Name", "Class", "Marks" };
+            writer.writeNext(header);
+
+            // add data to csv
+            String[] data1 = { "Aman", "10", "620" };
+            writer.writeNext(data1);
+            String[] data2 = { "Suraj", "10", "630" };
+            writer.writeNext(data2);
+
+            // closing writer connection
+            writer.close();
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     // Replaces variable symbols with the generated values (#R1# -> 2)
@@ -65,6 +93,7 @@ public class Main {
 
             String questionNumber = "";
             String executionCode = "";
+            String questionType = "";
             boolean mustExecute = false;
 
             while (file.hasNext()) {
@@ -86,7 +115,9 @@ public class Main {
                 } else if (nextLine.equals(TEXT_SECTION)) {
                     readTextSection(file, run, questionNumber);
                 } else if (nextLine.contains(SOLUTION_PREFIX)) {
-                    processSolution(file, nextLine, run, mustExecute, executionCode);
+                    processSolution(file, nextLine, run, mustExecute, executionCode, questionType);
+                } else if (nextLine.contains(QUESTION_TYPE_PREFIX)) {
+                    questionType = nextLine.substring(nextLine.indexOf(":")).trim();
                 }
             }
 
@@ -180,17 +211,54 @@ public class Main {
         }
     }
 
-    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode) {
+    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType) {
         if (mustExecute) {
             System.out.println(executionCode);
             String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
-            run.addCarriageReturn();
-            for (String solString : solutionStringArray) {
-                run.setText(solString);
+
+
+            if (questionType.equalsIgnoreCase("MC")) {
+                String[] choices = new String[0];
+                String[] points = new String[0];
+                boolean readingPoints = false;
+                int index = 0;
+
+                for (String solString : solutionStringArray) {
+                    if (solString.contains("Choices:")) {
+                        int length = Integer.parseInt(solString.substring(solString.indexOf("Choices:")).trim());
+                        choices = new String[length];
+                        points = new String[length];
+                    } else if (solString.contains("Points:")) {
+                        readingPoints = true;
+                        index = 0;
+                    }
+
+                    if (readingPoints) {
+                        points[index] = solString;
+                    } else {
+                        choices[index] = solString;
+                    }
+                }
+
+                String result = "";
+                for (int i = 0; i < choices.length; i++) {
+                    result += choices[i] + ": " + points[i] + "%\n";
+                }
+
                 run.addCarriageReturn();
+                run.setText(result);
+                run.addCarriageReturn();
+                run.addBreak();
+                run.addBreak();
+            } else {
+                run.addCarriageReturn();
+                for (String solString : solutionStringArray) {
+                    run.setText(solString);
+                    run.addCarriageReturn();
+                }
+                run.addBreak();
+                run.addBreak();
             }
-            run.addBreak();
-            run.addBreak();
         } else {
             int colonIndex = nextLine.indexOf(":");
             String solutionString = nextLine.substring(colonIndex + 1).trim();
