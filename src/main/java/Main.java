@@ -115,6 +115,22 @@ public class Main {
             ArrayList<String> setOptions = (ArrayList<String>) variables.get(setNum);
             String pickedValue = setOptions.get(rand.nextInt(setOptions.size()));
             variables.put(variableName, pickedValue);
+
+        } else if (sub.contains("#")) {
+            String[] variableInformation = sub.trim().split(",");
+            String varName = variableInformation[0].trim();
+            String method = variableInformation[1].trim();
+            String value = variableInformation[2].trim();
+
+            int hashMark = sub.indexOf("#");
+            int hashMark2 = sub.indexOf("#", hashMark + 1);
+            String var = sub.substring(hashMark + 1, hashMark2);
+            Object referenceVariable = variables.get(var);
+
+            if (method.equalsIgnoreCase("add")) {
+                variables.put(variableName, (int) referenceVariable + Integer.parseInt(value));
+            }
+
         } else {
             String[] variableInformation = sub.trim().split(",");
             String variableType = variableInformation[0].trim();
