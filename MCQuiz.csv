@@ -1,0 +1,193 @@
+"NewQuestion","MC"
+"Title",""
+"QuestionText","Read the method definition below:
+
+public static void f(int x, int y) {
+    System.out.print(""f"" + x + ""-"" + y);
+    g(x * 2, y * 2);
+    System.out.print(""f"" + x + ""-"" + y);
+}
+
+public static void g(int x, int y) {
+    System.out.print(""g"" + x + ""-"" + y);
+    x = x * y;
+    System.out.print(""g"" + x + ""-"" + y);
+}
+
+Given the code above, what is printed by the following code segment?
+
+f(3, 3);
+
+Note that if there is no output, please choose ""nothing""
+"
+"Points","1"
+"Difficulty","1"
+"Option","100","f3-3g6-6g36-6f3-3"
+"Option","50","f3-3g3-3g6-3f3-3"
+"Option","25","f3-3f6-6g6-6g36-6"
+"Option","37.5","f3-3g6-6g36-6f36-3"
+"Option","37.5","f3-3g6-6g36-6f36-6"
+"Option","37.5","f3-3g6-6g36-6"
+"Option","5","f3-3f6-5f12-6f36"
+"Option","5","f3-3g3-3"
+"Option","5","f3-3"
+"Option","0","f6-3"
+"Option","0","f6-6"
+"Option","15","g36-12"
+"Option","0","g3-3"
+"Option","0","g6-g6"
+"Option","0","f+3-3"
+"Option","0","nothing"
+
+"NewQuestion","MC"
+"Title",""
+"QuestionText","Specify the output of the following code segment.
+
+int[] numbers = {2, 3, 4, 5, 6};
+for (int i = 0; i < numbers.length; i++) {
+    if (i == 2) {
+        System.out.print(numbers[i]);
+    } else if (i == 3) {
+        System.out.print(numbers[i - 3]);
+        System.out.print(numbers[i - 1]);
+        System.out.print(numbers[i]);
+    } else if (i == 4) {
+        System.out.print(numbers[i - 4]);
+        System.out.print(numbers[i - 2]);
+        System.out.print(numbers[i]);
+    }
+}
+
+Note that if there is no output, please choose ""nothing""
+"
+"Points","1"
+"Difficulty","1"
+"Option","100","4245246"
+"Option","50","42456"
+"Option","0","22426"
+"Option","25","245"
+"Option","50","23456134246"
+"Option","15","2023024"
+"Option","0","455456656"
+"Option","0","023"
+"Option","5","024"
+"Option","0","243"
+"Option","0","2"
+"Option","0","2"
+"Option","0","4"
+"Option","0","nothing"
+
+"NewQuestion","MC"
+"Title",""
+"QuestionText","Read the method definition below:
+
+public class Container
+{
+    int type;
+    int beans;
+
+    public Container()
+    {
+        System.out.print(""a"");
+        this.type = 0;
+        this.beans = 0;
+    }
+
+    public Container(int type, int beans)
+    {
+        System.out.print(""b"");
+        this.type = type;
+        this.beans = beans;
+    }
+
+    public String toString()
+    {
+        return this.type + ""-"" + this.beans;
+    }
+}
+
+What is the output of the following code segment?
+
+    Container red = new Container();
+    Container green = new Container(6, 4);
+    System.out.print(red + ""$"");
+    System.out.print(green);
+
+
+Note that if there is no output, please choose ""nothing""
+"
+"Points","1"
+"Difficulty","1"
+"Option","100","ab0-0$6-4"
+"Option","80","0-0$6-4"
+"Option","90","b0-0$6-4"
+"Option","50","a0-0$b6-4"
+"Option","50","a$0-0b6-4"
+"Option","50","ab6-44"
+"Option","25","a$6-4"
+"Option","20","ab0$green"
+"Option","25","6-4"
+"Option","20","aba$b"
+"Option","0","a$b"
+"Option","0","6$4"
+"Option","0","red$green"
+"Option","0","red$2green"
+"Option","0","green-"
+"Option","0","green"
+"Option","0","Container()$ Container(6, 4)"
+"Option","0","nothing"
+
+"NewQuestion","MC"
+"Title",""
+"QuestionText","Read the following class definition,
+
+public class Pantry
+{
+
+    private int stages;
+    private int height;
+
+    public Pantry(int stages, int height) {
+        this.stages = stages;
+        this.height = height;
+    }
+
+    public int get() {
+        return this.stages + this.height;
+    }
+
+    public static int calc(int stages)
+    {
+        return stages * 2;
+    }
+
+}
+
+What is the output of the following code segment?
+
+Pantry food = new Pantry(2, 6);
+int x = food.get();
+System.out.print(x + ""-"");
+int y = Pantry.calc(12);
+System.out.print(y);
+
+Note that if there is no output, please choose ""nothing""
+"
+"Points","1"
+"Difficulty","1"
+"Option","100","8-24"
+"Option","50","8-4"
+"Option","50","8-24"
+"Option","0","8 2-72"
+"Option","50","8-12"
+"Option","80","10-24"
+"Option","80","26-24"
+"Option","50","1-24"
+"Option","50","24-72"
+"Option","0","16"
+"Option","0","4"
+"Option","0","2"
+"Option","0","2-6"
+"Option","0","6-4"
+"Option","0","nothing"
+

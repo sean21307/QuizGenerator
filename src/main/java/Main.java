@@ -1,7 +1,4 @@
 import com.opencsv.CSVWriter;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -23,7 +20,7 @@ public class Main {
     static Map<String, Object> variables = new HashMap<>();
 
     public static void main(String[] args) {
-        generateQuizFile("template");
+        generateQuizFile("MCTemplate");
         //generateQuizFile("Chapter2Template");
         //generateQuizFile("Chapter3Template");
         //generateQuizFile("Chapter4Template");
@@ -31,7 +28,12 @@ public class Main {
         //generateQuizFile("Chapter6Template");
         //generateQuizFile("Chapter7Template");
 
-        File file = new File("testCsv.csv");
+
+    }
+
+    // Generates a CSV file for questions
+    public static void writeToCsv(String fileName, List<String[][]> questions) {
+        File file = new File(fileName);
         try {
             // create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file);
@@ -39,15 +41,13 @@ public class Main {
             // create CSVWriter object filewriter object as parameter
             CSVWriter writer = new CSVWriter(outputfile);
 
-            // adding header to csv
-            String[] header = { "Name", "Class", "Marks" };
-            writer.writeNext(header);
+            for (String[][] arr: questions) {
+                for (String[] data: arr) {
+                    writer.writeNext(data);
+                }
 
-            // add data to csv
-            String[] data1 = { "Aman", "10", "620" };
-            writer.writeNext(data1);
-            String[] data2 = { "Suraj", "10", "630" };
-            writer.writeNext(data2);
+                writer.writeNext(new String[]{});
+            }
 
             // closing writer connection
             writer.close();
@@ -64,6 +64,10 @@ public class Main {
         int hash2 = line.indexOf("#", hash1 + 1);
 
         while (hash1 != -1) {
+            if (hash2 == -1) {
+                System.out.println("Isolated hashtag in line: " + line);
+                continue;
+            }
             String findVar = line.substring(hash1 + 1, hash2);
             Object var = variables.get(findVar);
 
@@ -83,6 +87,9 @@ public class Main {
     public static void generateQuizFile(String name) {
         String filePath = String.format("src/main/java/%s.txt", name);
         String outputFileName = String.format("%s.docx", name).replace("Template", "Quiz");
+        String csvFileName = String.format("%s.csv", name).replace("Template", "Quiz");
+
+        List<String[][]> allQuestions = new ArrayList<>();
 
         try (Scanner file = new Scanner(new File(filePath));
              XWPFDocument document = new XWPFDocument();
@@ -94,6 +101,7 @@ public class Main {
             String questionNumber = "";
             String executionCode = "";
             String questionType = "";
+            String csvQuestionText = "";
             boolean mustExecute = false;
 
             while (file.hasNext()) {
@@ -113,16 +121,18 @@ public class Main {
                     mustExecute = true;
                     executionCode = readCodeSection(file);
                 } else if (nextLine.equals(TEXT_SECTION)) {
-                    readTextSection(file, run, questionNumber);
+                    csvQuestionText = readTextSection(file, run, questionNumber);
                 } else if (nextLine.contains(SOLUTION_PREFIX)) {
-                    processSolution(file, nextLine, run, mustExecute, executionCode, questionType);
+                    processSolution(file, nextLine, run, mustExecute, executionCode, questionType, csvFileName, csvQuestionText, allQuestions);
                 } else if (nextLine.contains(QUESTION_TYPE_PREFIX)) {
-                    questionType = nextLine.substring(nextLine.indexOf(":")).trim();
+                    questionType = nextLine.substring(nextLine.indexOf(":") + 1).trim();
                 }
             }
 
             document.write(out);
+            writeToCsv(csvFileName, allQuestions);
             System.out.println(String.format("%s generated successfully", outputFileName));
+            System.out.println(String.format("%s generated successfully", csvFileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -193,14 +203,16 @@ public class Main {
         return executionCode.toString();
     }
 
-    private static void readTextSection(Scanner file, XWPFRun run, String questionNumber) {
+    private static String readTextSection(Scanner file, XWPFRun run, String questionNumber) {
         boolean setQuestionText = false;
+        String csvQuestionText = "";
         while (file.hasNext()) {
             String textLine = file.nextLine();
             if (textLine.equals(END_TEXT_SECTION)) {
                 break;
             }
             textLine = replaceVariables(textLine);
+            csvQuestionText += textLine + "\n";
             if (!setQuestionText && !textLine.contains("Type: ")) {
                 setQuestionText = true;
                 run.setText(questionNumber + ". " + textLine);
@@ -209,15 +221,17 @@ public class Main {
             }
             run.addBreak();
         }
+
+        return csvQuestionText;
     }
 
-    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType) {
+    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType, String csvFileName, String questionText, List<String[][]> allQuestions) {
         if (mustExecute) {
             System.out.println(executionCode);
             String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
 
-
             if (questionType.equalsIgnoreCase("MC")) {
+
                 String[] choices = new String[0];
                 String[] points = new String[0];
                 boolean readingPoints = false;
@@ -225,12 +239,14 @@ public class Main {
 
                 for (String solString : solutionStringArray) {
                     if (solString.contains("Choices:")) {
-                        int length = Integer.parseInt(solString.substring(solString.indexOf("Choices:")).trim());
+                        int length = Integer.parseInt(solString.substring(solString.indexOf(":") + 1).trim());
                         choices = new String[length];
                         points = new String[length];
+                        continue;
                     } else if (solString.contains("Points:")) {
                         readingPoints = true;
                         index = 0;
+                        continue;
                     }
 
                     if (readingPoints) {
@@ -238,18 +254,34 @@ public class Main {
                     } else {
                         choices[index] = solString;
                     }
+
+                    index += 1;
                 }
 
-                String result = "";
+                run.addCarriageReturn();
                 for (int i = 0; i < choices.length; i++) {
-                    result += choices[i] + ": " + points[i] + "%\n";
+                    run.setText(choices[i].trim() + ": " + points[i].trim() + "%\n");
+                    run.addCarriageReturn();
                 }
 
-                run.addCarriageReturn();
-                run.setText(result);
-                run.addCarriageReturn();
                 run.addBreak();
                 run.addBreak();
+
+
+                // Generate CSV
+                String[][] csvData = new String[5 + choices.length][];
+                csvData[0] = new String[]{"NewQuestion", "MC"};
+                csvData[1] = new String[]{"Title", ""};
+                csvData[2] = new String[]{"QuestionText", questionText};
+                csvData[3] = new String[]{"Points", "1"};
+                csvData[4] = new String[]{"Difficulty", "1"};
+                for (int i = 0; i < choices.length; i++) {
+                    csvData[5 + i] = new String[]{"Option", points[i].trim(), choices[i].trim()};
+                }
+
+
+                allQuestions.add(csvData);
+
             } else {
                 run.addCarriageReturn();
                 for (String solString : solutionStringArray) {

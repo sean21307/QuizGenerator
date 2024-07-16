@@ -1,0 +1,40 @@
+"NewQuestion","MC"
+"Title",""
+"QuestionText","Read the method definition below:
+
+public static void f(int x, int y) {
+    System.out.print(""f"" + x + ""-"" + y);
+    b(x * 3, y * 3);
+    System.out.print(""f"" + x + ""-"" + y);
+}
+
+public static void b(int x, int y) {
+    System.out.print(""b"" + x + ""-"" + y);
+    x = x * y;
+    System.out.print(""b"" + x + ""-"" + y);
+}
+
+Given the code above, what is printed by the following code segment?
+
+f(3, 3);
+
+Note that if there is no output, please choose ""nothing""
+"
+"Points","1"
+"Difficulty","1"
+"Option","100","f3-3b9-9b81-9f3-3"
+"Option","50","f3-3b3-3b9-3f3-3"
+"Option","25","f3-3f9-9b9-9b81-9"
+"Option","37.5","f3-3b9-9b81-9f81-3"
+"Option","37.5","f3-3b9-9b81-9f81-9"
+"Option","37.5","f3-3b9-9b81-9"
+"Option","5","f3-3f9-8f18-9f81"
+"Option","5","f3-3b3-3"
+"Option","5","f3-3"
+"Option","0","f9-3"
+"Option","0","f9-9"
+"Option","15","b81-27"
+"Option","0","b3-3"
+"Option","0","b9-b9"
+"Option","0","f+3-3"
+"Option","0","nothing"
