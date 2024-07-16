@@ -1,0 +1,51 @@
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+int u;
+int  b = 3;
+
+for (u = 9; u >  b; u--)
+{
+    System.out.print(u + ""-"");
+    System.out.print( b + ""$"");
+     b += 2;
+}
+
+Note:
+(1) If there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
+(2) If a variable is out of scope after the code segment is executed, please specify ""out of scope"" (no quotes) in the blank for the variable.
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","3","40"
+"Answer","100","9-3$8-5$"
+"Answer","100","7"
+"Answer","100","7"
+
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the output and the variables' values after the following code segment is executed.
+
+double amount = 1.9;
+double count = 6.4;
+
+while (amount < count)
+{
+    System.out.print(amount + ""-"");
+    System.out.print(count + ""-"");
+    amount += 1.0;
+    count -= 1.0;
+}
+
+If there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","3","40"
+"Answer","100","1.9-6.4-2.9-5.4-3.9-4.4-"
+"Answer","100","4.90"
+"Answer","100","3.40"
+

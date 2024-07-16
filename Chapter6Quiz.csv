@@ -1,0 +1,65 @@
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the output of the following code segment.
+
+int[] collection = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+int position = 5;
+System.out.print(collection[position - 1] + ""-"");
+System.out.print(collection[position] + ""-"");
+System.out.print(collection[position + 1]);
+
+Note that if there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","1","40"
+"Answer","100","4-5-6"
+
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the array's content after the following code segment is executed.
+int[] group = new int[6];
+for (int index = 0; index <= group.length; index++)
+{
+  group[index] = 6;
+}
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","6","40"
+"Answer","100","0"
+"Answer","100","1"
+"Answer","100","2"
+"Answer","100","3"
+"Answer","100","4"
+"Answer","100","5"
+
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the output of the program after the main method is executed.
+
+public static void f(int[] matrix, int depth, int height)
+{
+  matrix[depth] = height;
+  matrix[height] = depth;
+}
+
+public static void main(String[] args)
+{
+  int[] inventory = {4, 2, 4, 8, 7, 7};
+  int r = 1;
+  f(inventory, 1, r);
+  for (int index = 0; index < inventory.length; index ++)
+  {
+    System.out.print(inventory[index] + ""-"");
+  }
+}
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","1","40"
+"Answer","100","4-1-4-8-7-7-"
+

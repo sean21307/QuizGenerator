@@ -6,6 +6,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     static final String QUESTION_PREFIX = "Question #";
@@ -20,14 +22,14 @@ public class Main {
     static Map<String, Object> variables = new HashMap<>();
 
     public static void main(String[] args) {
-        generateQuizFile("MCTemplate");
-        //generateQuizFile("Chapter2Template");
-        //generateQuizFile("Chapter3Template");
-        //generateQuizFile("Chapter4Template");
-        //generateQuizFile("Chapter5Template");
-        //generateQuizFile("Chapter6Template");
-        //generateQuizFile("Chapter7Template");
 
+        generateQuizFile("Chapter2Template");
+        generateQuizFile("Chapter3Template");
+        generateQuizFile("Chapter4Template");
+        generateQuizFile("Chapter5Template");
+        generateQuizFile("Chapter6Template");
+        generateQuizFile("Chapter7Template");
+        generateQuizFile("MCTemplate");
 
     }
 
@@ -225,13 +227,40 @@ public class Main {
         return csvQuestionText;
     }
 
+    public static Object extractValue(String str) {
+        // Pattern for extracting a number
+        Pattern numberPattern = Pattern.compile("\\[(\\d+)]");
+        Matcher numberMatcher = numberPattern.matcher(str);
+
+        if (numberMatcher.find()) {
+            return Integer.parseInt(numberMatcher.group(1));
+        }
+
+        // Pattern for extracting a boolean
+        Pattern booleanPattern = Pattern.compile("\\[(true|false)]");
+        Matcher booleanMatcher = booleanPattern.matcher(str);
+
+        if (booleanMatcher.find()) {
+            return Boolean.parseBoolean(booleanMatcher.group(1));
+        }
+
+        // Pattern for extracting a custom string inside []
+        Pattern customPattern = Pattern.compile("\\[(.*?)]");
+        Matcher customMatcher = customPattern.matcher(str);
+
+        if (customMatcher.find()) {
+            return customMatcher.group(1);
+        }
+
+        return null;
+    }
+
     private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType, String csvFileName, String questionText, List<String[][]> allQuestions) {
         if (mustExecute) {
             System.out.println(executionCode);
             String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
 
             if (questionType.equalsIgnoreCase("MC")) {
-
                 String[] choices = new String[0];
                 String[] points = new String[0];
                 boolean readingPoints = false;
@@ -283,6 +312,20 @@ public class Main {
                 allQuestions.add(csvData);
 
             } else {
+                // Generate CSV
+                String[][] csvData = new String[6 + solutionStringArray.length][];
+                csvData[0] = new String[]{"NewQuestion", "SA"};
+                csvData[1] = new String[]{"Title", ""};
+                csvData[2] = new String[]{"QuestionText", questionText};
+                csvData[3] = new String[]{"Points", "1"};
+                csvData[4] = new String[]{"Difficulty", "1"};
+                csvData[5] = new String[]{"InputBox", String.valueOf(solutionStringArray.length), "40"};
+                for (int i = 0; i < solutionStringArray.length; i++) {
+                    csvData[6 + i] = new String[]{"Answer", "100", String.valueOf(extractValue(solutionStringArray[i]))};
+                }
+
+                allQuestions.add(csvData);
+
                 run.addCarriageReturn();
                 for (String solString : solutionStringArray) {
                     run.setText(solString);
@@ -300,9 +343,29 @@ public class Main {
             List<String> units = readUnits(file);
 
             String solution = formatSolution(resultString, units);
+
             run.setText(solution);
             run.addBreak();
             run.addBreak();
+
+
+            // Generate CSV
+            String str = solution.replaceAll("[\\[\\]]", "").trim();
+            String[] entries = str.split("\\s*,\\s*");
+
+            String[][] csvData = new String[6 + entries.length][];
+            csvData[0] = new String[]{"NewQuestion", "SA"};
+            csvData[1] = new String[]{"Title", ""};
+            csvData[2] = new String[]{"QuestionText", questionText};
+            csvData[3] = new String[]{"Points", "1"};
+            csvData[4] = new String[]{"Difficulty", "1"};
+            csvData[5] = new String[]{"InputBox", String.valueOf(entries.length), "40"};
+            for (int i = 0; i < entries.length; i++) {
+                csvData[6 + i] = new String[]{"Answer", "100", String.valueOf(entries[i])};
+            }
+
+            allQuestions.add(csvData);
+
         }
     }
 

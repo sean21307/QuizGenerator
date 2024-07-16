@@ -1,0 +1,97 @@
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Specify the output of the program.
+
+public class TalkRun
+{
+  String result = """";
+
+  public static void talk()
+  {
+    String message = ""hello"";
+    System.out.print(message);
+  }
+
+  public static void run()
+  {
+    double  amount = 47.6;
+    System.out.print( amount);
+  }
+
+  public static void main(String[] args)
+  {
+    String name = ""Linda"";
+    talk();
+    run();
+    System.out.print(name);
+  }
+}
+
+Note that you will need to pay attention to how a double value will be printed out.
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","1","40"
+"Answer","100","hello47.6Linda"
+
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Read the method definition below:
+
+public static String hello(String name, int age)
+{
+  String greeting = ""Hello "" + name;
+  if (age < 18)
+  {
+    greeting = greeting + ""!"";
+  }
+  else
+  {
+    greeting = greeting + ""! Safety first."";
+  }
+
+  return greeting;
+}
+
+Given the code above, what is printed by the following code segment:
+String message = hello("" John"", 15);
+System.out.println(message);
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","1","40"
+"Answer","100","Hello  John!"
+
+"NewQuestion","SA"
+"Title",""
+"QuestionText","Type: FMB
+Read the method definition below:
+public class Joining
+{
+  public static double join(double score)
+  {
+    if (score < 50)
+    {
+      score = score / 2;
+      return score;
+    }
+    else
+    {
+      return 100.0;
+    }
+  }
+
+
+  public static void main(String[] args)
+  {
+    System.out.print(join(6.2));
+  }
+}
+"
+"Points","1"
+"Difficulty","1"
+"InputBox","1","40"
+"Answer","100","3.10"
+
