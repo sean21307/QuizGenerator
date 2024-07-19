@@ -1,49 +1,47 @@
 "NewQuestion","MC"
 "Title",""
-"QuestionText","```java
-Read the method definition below:
+"QuestionText","""<pre>Read the method definition below:
 
-public static void a(int x, int y) {
-    System.out.print(""a"" + x + ""-"" + y);
-    g(x * 3, y * 3);
-    System.out.print(""a"" + x + ""-"" + y);
+public static void f(int x, int y) {
+    System.out.print(""f"" + x + ""-"" + y);
+    b(x * 3, y * 3);
+    System.out.print(""f"" + x + ""-"" + y);
 }
 
-public static void g(int x, int y) {
-    System.out.print(""g"" + x + ""-"" + y);
+public static void b(int x, int y) {
+    System.out.print(""b"" + x + ""-"" + y);
     x = x * y;
-    System.out.print(""g"" + x + ""-"" + y);
+    System.out.print(""b"" + x + ""-"" + y);
 }
 
 Given the code above, what is printed by the following code segment?
 
-a(2, 3);
+f(2, 4);
 
 Note that if there is no output, please choose ""nothing""
-```
-"
+</pre>"""
 "Points","1"
 "Difficulty","1"
-"Option","100","a2-3g6-9g54-9a2-3"
-"Option","50","a2-3g2-3g6-3a2-3"
-"Option","25","a2-3a6-9g6-9g54-9"
-"Option","37.5","a2-3g6-9g54-9a54-3"
-"Option","37.5","a2-3g6-9g54-9a54-9"
-"Option","37.5","a2-3g6-9g54-9"
-"Option","5","a2-3a9-8a15-9a54"
-"Option","5","a2-3g2-3"
-"Option","5","a2-3"
-"Option","0","a6-3"
-"Option","0","a6-9"
-"Option","15","g54-18"
-"Option","0","g2-3"
-"Option","0","g6-g9"
-"Option","0","a+2-3"
+"Option","100","f2-4b6-12b72-12f2-4"
+"Option","50","f2-4b2-4b6-4f2-4"
+"Option","25","f2-4f6-12b6-12b72-12"
+"Option","37.5","f2-4b6-12b72-12f72-4"
+"Option","37.5","f2-4b6-12b72-12f72-12"
+"Option","37.5","f2-4b6-12b72-12"
+"Option","5","f2-4f12-11f18-12f72"
+"Option","5","f2-4b2-4"
+"Option","5","f2-4"
+"Option","0","f6-4"
+"Option","0","f6-12"
+"Option","15","b72-18"
+"Option","0","b2-4"
+"Option","0","b6-b12"
+"Option","0","f+2-4"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","Specify the output of the following code segment.
+"QuestionText","""<pre>Specify the output of the following code segment.
 
 int[] numbers = {4, 5, 6, 7, 8};
 for (int i = 0; i < numbers.length; i++) {
@@ -61,7 +59,7 @@ for (int i = 0; i < numbers.length; i++) {
 }
 
 Note that if there is no output, please choose ""nothing""
-"
+</pre>"""
 "Points","1"
 "Difficulty","1"
 "Option","100","6467468"
@@ -81,7 +79,7 @@ Note that if there is no output, please choose ""nothing""
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","Read the method definition below:
+"QuestionText","""<pre>Read the method definition below:
 
 public class Container
 {
@@ -111,37 +109,37 @@ public class Container
 What is the output of the following code segment?
 
     Container red = new Container();
-    Container green = new Container(7, 4);
+    Container green = new Container(4, 2);
     System.out.print(red + ""$"");
     System.out.print(green);
 
 
 Note that if there is no output, please choose ""nothing""
-"
+</pre>"""
 "Points","1"
 "Difficulty","1"
-"Option","100","ab0-0$7-4"
-"Option","80","0-0$7-4"
-"Option","90","b0-0$7-4"
-"Option","50","a0-0$b7-4"
-"Option","50","a$0-0b7-4"
-"Option","50","ab7-44"
-"Option","25","a$7-4"
+"Option","100","ab0-0$4-2"
+"Option","80","0-0$4-2"
+"Option","90","b0-0$4-2"
+"Option","50","a0-0$b4-2"
+"Option","50","a$0-0b4-2"
+"Option","50","ab4-24"
+"Option","25","a$4-2"
 "Option","20","ab0$green"
-"Option","25","7-4"
+"Option","25","4-2"
 "Option","20","aba$b"
 "Option","0","a$b"
-"Option","0","7$4"
+"Option","0","4$2"
 "Option","0","red$green"
 "Option","0","red$2green"
 "Option","0","green-"
 "Option","0","green"
-"Option","0","Container()$ Container(7, 4)"
+"Option","0","Container()$ Container(4, 2)"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","Read the following class definition,
+"QuestionText","""<pre>Read the following class definition,
 
 public class Pantry
 {
@@ -167,29 +165,29 @@ public class Pantry
 
 What is the output of the following code segment?
 
-Pantry food = new Pantry(2, 3);
+Pantry food = new Pantry(2, 2);
 int x = food.get();
 System.out.print(x + ""-"");
-int y = Pantry.calc(8);
+int y = Pantry.calc(12);
 System.out.print(y);
 
 Note that if there is no output, please choose ""nothing""
-"
+</pre>"""
 "Points","1"
 "Difficulty","1"
-"Option","100","5-16"
-"Option","50","5-4"
-"Option","50","5-16"
-"Option","0","5 2-24"
-"Option","50","5-8"
-"Option","80","7-16"
-"Option","80","23-16"
-"Option","50","1-16"
-"Option","50","16-24"
-"Option","0","10"
+"Option","100","4-24"
+"Option","50","4-4"
+"Option","50","4-24"
+"Option","0","4 2-24"
+"Option","50","4-12"
+"Option","80","6-24"
+"Option","80","22-24"
+"Option","50","1-24"
+"Option","50","24-24"
+"Option","0","8"
 "Option","0","4"
 "Option","0","2"
-"Option","0","2-3"
+"Option","0","2-2"
 "Option","0","6-4"
 "Option","0","nothing"
 

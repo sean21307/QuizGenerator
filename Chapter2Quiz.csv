@@ -2,15 +2,15 @@
 "Title",""
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
-long  total = 2 + 6 / 3;
+long  total = 2 + 3 / 2;
 
 Pay attention to how to specify a long value.
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","4L"
-"Answer","100","4l"
+"Answer","100","3L"
+"Answer","100","3l"
 
 "NewQuestion","SA"
 "Title",""
@@ -18,7 +18,7 @@ Pay attention to how to specify a long value.
 What are variables' values after the following code segment is executed?
 
 int today = 1;
-int yesterday = 9;
+int yesterday = 10;
 int tomorrow = 3;
 yesterday = today;
 today = tomorrow;
@@ -39,11 +39,11 @@ tomorrow = today + yesterday;
 "Title",""
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
-double  m = 2.9 / 5 * (73 - 3);
+double  m = 4.5 / 5 * (84 - 3);
 
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","40.6"
+"Answer","100","72.9"
 
