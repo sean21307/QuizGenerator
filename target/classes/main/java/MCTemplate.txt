@@ -69,6 +69,7 @@ public class DynamicCode {
 :EndCode:
 
 :Text:
+```java
 Read the method definition below:
 
 public static void #N1#(int x, int y) {
@@ -88,6 +89,7 @@ Given the code above, what is printed by the following code segment?
 #N1#(#R1#, #R2#);
 
 Note that if there is no output, please choose "nothing"
+```
 :EndText:
 
 Solution: compile

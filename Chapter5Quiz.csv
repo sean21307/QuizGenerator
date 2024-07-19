@@ -15,13 +15,13 @@ public class TalkRun
 
   public static void run()
   {
-    double  amount = 47.6;
-    System.out.print( amount);
+    double  points = 45.7;
+    System.out.print( points);
   }
 
   public static void main(String[] args)
   {
-    String name = ""Linda"";
+    String name = "" John"";
     talk();
     run();
     System.out.print(name);
@@ -33,7 +33,7 @@ Note that you will need to pay attention to how a double value will be printed o
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","hello47.6Linda"
+"Answer","100","hello45.7 John"
 
 "NewQuestion","SA"
 "Title",""
@@ -56,13 +56,13 @@ public static String hello(String name, int age)
 }
 
 Given the code above, what is printed by the following code segment:
-String message = hello("" John"", 15);
+String message = hello("" Joe"", 21);
 System.out.println(message);
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","Hello  John!"
+"Answer","100","Hello  Joe! Safety first."
 
 "NewQuestion","SA"
 "Title",""
@@ -86,12 +86,12 @@ public class Joining
 
   public static void main(String[] args)
   {
-    System.out.print(join(6.2));
+    System.out.print(join(96.1));
   }
 }
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","3.10"
+"Answer","100","100.00"
 

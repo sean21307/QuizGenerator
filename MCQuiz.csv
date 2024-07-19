@@ -1,49 +1,51 @@
 "NewQuestion","MC"
 "Title",""
-"QuestionText","Read the method definition below:
+"QuestionText","```java
+Read the method definition below:
 
 public static void a(int x, int y) {
     System.out.print(""a"" + x + ""-"" + y);
-    b(x * 2, y * 2);
+    g(x * 3, y * 3);
     System.out.print(""a"" + x + ""-"" + y);
 }
 
-public static void b(int x, int y) {
-    System.out.print(""b"" + x + ""-"" + y);
+public static void g(int x, int y) {
+    System.out.print(""g"" + x + ""-"" + y);
     x = x * y;
-    System.out.print(""b"" + x + ""-"" + y);
+    System.out.print(""g"" + x + ""-"" + y);
 }
 
 Given the code above, what is printed by the following code segment?
 
-a(3, 2);
+a(2, 3);
 
 Note that if there is no output, please choose ""nothing""
+```
 "
 "Points","1"
 "Difficulty","1"
-"Option","100","a3-2b6-4b24-4a3-2"
-"Option","50","a3-2b3-2b6-2a3-2"
-"Option","25","a3-2a6-4b6-4b24-4"
-"Option","37.5","a3-2b6-4b24-4a24-2"
-"Option","37.5","a3-2b6-4b24-4a24-4"
-"Option","37.5","a3-2b6-4b24-4"
-"Option","5","a3-2a4-3a10-4a24"
-"Option","5","a3-2b3-2"
-"Option","5","a3-2"
-"Option","0","a6-2"
-"Option","0","a6-4"
-"Option","15","b24-12"
-"Option","0","b3-2"
-"Option","0","b6-b4"
-"Option","0","a+3-2"
+"Option","100","a2-3g6-9g54-9a2-3"
+"Option","50","a2-3g2-3g6-3a2-3"
+"Option","25","a2-3a6-9g6-9g54-9"
+"Option","37.5","a2-3g6-9g54-9a54-3"
+"Option","37.5","a2-3g6-9g54-9a54-9"
+"Option","37.5","a2-3g6-9g54-9"
+"Option","5","a2-3a9-8a15-9a54"
+"Option","5","a2-3g2-3"
+"Option","5","a2-3"
+"Option","0","a6-3"
+"Option","0","a6-9"
+"Option","15","g54-18"
+"Option","0","g2-3"
+"Option","0","g6-g9"
+"Option","0","a+2-3"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
 "QuestionText","Specify the output of the following code segment.
 
-int[] numbers = {3, 4, 5, 6, 7};
+int[] numbers = {4, 5, 6, 7, 8};
 for (int i = 0; i < numbers.length; i++) {
     if (i == 2) {
         System.out.print(numbers[i]);
@@ -62,19 +64,19 @@ Note that if there is no output, please choose ""nothing""
 "
 "Points","1"
 "Difficulty","1"
-"Option","100","5356357"
-"Option","50","53567"
-"Option","0","33537"
-"Option","25","356"
-"Option","50","34567245357"
+"Option","100","6467468"
+"Option","50","64678"
+"Option","0","44648"
+"Option","25","467"
+"Option","50","45678356468"
 "Option","15","2023024"
-"Option","0","566567767"
+"Option","0","677678878"
 "Option","0","023"
 "Option","5","024"
-"Option","0","354"
+"Option","0","465"
 "Option","0","2"
-"Option","0","3"
-"Option","0","5"
+"Option","0","4"
+"Option","0","6"
 "Option","0","nothing"
 
 "NewQuestion","MC"
@@ -109,7 +111,7 @@ public class Container
 What is the output of the following code segment?
 
     Container red = new Container();
-    Container green = new Container(8, 3);
+    Container green = new Container(7, 4);
     System.out.print(red + ""$"");
     System.out.print(green);
 
@@ -118,23 +120,23 @@ Note that if there is no output, please choose ""nothing""
 "
 "Points","1"
 "Difficulty","1"
-"Option","100","ab0-0$8-3"
-"Option","80","0-0$8-3"
-"Option","90","b0-0$8-3"
-"Option","50","a0-0$b8-3"
-"Option","50","a$0-0b8-3"
-"Option","50","ab8-34"
-"Option","25","a$8-3"
+"Option","100","ab0-0$7-4"
+"Option","80","0-0$7-4"
+"Option","90","b0-0$7-4"
+"Option","50","a0-0$b7-4"
+"Option","50","a$0-0b7-4"
+"Option","50","ab7-44"
+"Option","25","a$7-4"
 "Option","20","ab0$green"
-"Option","25","8-3"
+"Option","25","7-4"
 "Option","20","aba$b"
 "Option","0","a$b"
-"Option","0","8$3"
+"Option","0","7$4"
 "Option","0","red$green"
 "Option","0","red$2green"
 "Option","0","green-"
 "Option","0","green"
-"Option","0","Container()$ Container(8, 3)"
+"Option","0","Container()$ Container(7, 4)"
 "Option","0","nothing"
 
 "NewQuestion","MC"
@@ -165,29 +167,29 @@ public class Pantry
 
 What is the output of the following code segment?
 
-Pantry food = new Pantry(5, 6);
+Pantry food = new Pantry(2, 3);
 int x = food.get();
 System.out.print(x + ""-"");
-int y = Pantry.calc(12);
+int y = Pantry.calc(8);
 System.out.print(y);
 
 Note that if there is no output, please choose ""nothing""
 "
 "Points","1"
 "Difficulty","1"
-"Option","100","11-24"
-"Option","50","11-10"
-"Option","50","11-60"
-"Option","0","11 5-72"
-"Option","50","11-12"
-"Option","80","13-24"
-"Option","80","56-24"
-"Option","50","1-24"
-"Option","50","60-72"
-"Option","0","22"
+"Option","100","5-16"
+"Option","50","5-4"
+"Option","50","5-16"
+"Option","0","5 2-24"
+"Option","50","5-8"
+"Option","80","7-16"
+"Option","80","23-16"
+"Option","50","1-16"
+"Option","50","16-24"
 "Option","0","10"
-"Option","0","5"
-"Option","0","5-6"
+"Option","0","4"
+"Option","0","2"
+"Option","0","2-3"
 "Option","0","6-4"
 "Option","0","nothing"
 
