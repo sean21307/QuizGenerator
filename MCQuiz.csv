@@ -1,49 +1,49 @@
 "NewQuestion","MC"
 "Title",""
-"QuestionText","""<pre>Read the method definition below:
+"QuestionText","&lt;pre&gt;Read the method definition below:
 
 public static void f(int x, int y) {
     System.out.print(""f"" + x + ""-"" + y);
-    b(x * 3, y * 3);
+    g(x * 3, y * 3);
     System.out.print(""f"" + x + ""-"" + y);
 }
 
-public static void b(int x, int y) {
-    System.out.print(""b"" + x + ""-"" + y);
+public static void g(int x, int y) {
+    System.out.print(""g"" + x + ""-"" + y);
     x = x * y;
-    System.out.print(""b"" + x + ""-"" + y);
+    System.out.print(""g"" + x + ""-"" + y);
 }
 
 Given the code above, what is printed by the following code segment?
 
-f(2, 4);
+f(2, 2);
 
 Note that if there is no output, please choose ""nothing""
-</pre>"""
+&lt;/pre&gt;"
 "Points","1"
 "Difficulty","1"
-"Option","100","f2-4b6-12b72-12f2-4"
-"Option","50","f2-4b2-4b6-4f2-4"
-"Option","25","f2-4f6-12b6-12b72-12"
-"Option","37.5","f2-4b6-12b72-12f72-4"
-"Option","37.5","f2-4b6-12b72-12f72-12"
-"Option","37.5","f2-4b6-12b72-12"
-"Option","5","f2-4f12-11f18-12f72"
-"Option","5","f2-4b2-4"
-"Option","5","f2-4"
-"Option","0","f6-4"
-"Option","0","f6-12"
-"Option","15","b72-18"
-"Option","0","b2-4"
-"Option","0","b6-b12"
-"Option","0","f+2-4"
+"Option","100","f2-2g6-6g36-6f2-2"
+"Option","50","f2-2g2-2g6-2f2-2"
+"Option","25","f2-2f6-6g6-6g36-6"
+"Option","37.5","f2-2g6-6g36-6f36-2"
+"Option","37.5","f2-2g6-6g36-6f36-6"
+"Option","37.5","f2-2g6-6g36-6"
+"Option","5","f2-2f6-5f12-6f36"
+"Option","5","f2-2g2-2"
+"Option","5","f2-2"
+"Option","0","f6-2"
+"Option","0","f6-6"
+"Option","15","g36-18"
+"Option","0","g2-2"
+"Option","0","g6-g6"
+"Option","0","f+2-2"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","""<pre>Specify the output of the following code segment.
+"QuestionText","&lt;pre&gt;Specify the output of the following code segment.
 
-int[] numbers = {4, 5, 6, 7, 8};
+int[] numbers = {5, 6, 7, 8, 9};
 for (int i = 0; i < numbers.length; i++) {
     if (i == 2) {
         System.out.print(numbers[i]);
@@ -59,27 +59,27 @@ for (int i = 0; i < numbers.length; i++) {
 }
 
 Note that if there is no output, please choose ""nothing""
-</pre>"""
+&lt;/pre&gt;"
 "Points","1"
 "Difficulty","1"
-"Option","100","6467468"
-"Option","50","64678"
-"Option","0","44648"
-"Option","25","467"
-"Option","50","45678356468"
+"Option","100","7578579"
+"Option","50","75789"
+"Option","0","55759"
+"Option","25","578"
+"Option","50","56789467579"
 "Option","15","2023024"
-"Option","0","677678878"
+"Option","0","788789989"
 "Option","0","023"
 "Option","5","024"
-"Option","0","465"
+"Option","0","576"
 "Option","0","2"
-"Option","0","4"
-"Option","0","6"
+"Option","0","5"
+"Option","0","7"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","""<pre>Read the method definition below:
+"QuestionText","&lt;pre&gt;Read the method definition below:
 
 public class Container
 {
@@ -109,37 +109,37 @@ public class Container
 What is the output of the following code segment?
 
     Container red = new Container();
-    Container green = new Container(4, 2);
+    Container green = new Container(1, 10);
     System.out.print(red + ""$"");
     System.out.print(green);
 
 
 Note that if there is no output, please choose ""nothing""
-</pre>"""
+&lt;/pre&gt;"
 "Points","1"
 "Difficulty","1"
-"Option","100","ab0-0$4-2"
-"Option","80","0-0$4-2"
-"Option","90","b0-0$4-2"
-"Option","50","a0-0$b4-2"
-"Option","50","a$0-0b4-2"
-"Option","50","ab4-24"
-"Option","25","a$4-2"
+"Option","100","ab0-0$1-10"
+"Option","80","0-0$1-10"
+"Option","90","b0-0$1-10"
+"Option","50","a0-0$b1-10"
+"Option","50","a$0-0b1-10"
+"Option","50","ab1-104"
+"Option","25","a$1-10"
 "Option","20","ab0$green"
-"Option","25","4-2"
+"Option","25","1-10"
 "Option","20","aba$b"
 "Option","0","a$b"
-"Option","0","4$2"
+"Option","0","1$10"
 "Option","0","red$green"
 "Option","0","red$2green"
 "Option","0","green-"
 "Option","0","green"
-"Option","0","Container()$ Container(4, 2)"
+"Option","0","Container()$ Container(1, 10)"
 "Option","0","nothing"
 
 "NewQuestion","MC"
 "Title",""
-"QuestionText","""<pre>Read the following class definition,
+"QuestionText","&lt;pre&gt;Read the following class definition,
 
 public class Pantry
 {
@@ -165,29 +165,29 @@ public class Pantry
 
 What is the output of the following code segment?
 
-Pantry food = new Pantry(2, 2);
+Pantry food = new Pantry(6, 7);
 int x = food.get();
 System.out.print(x + ""-"");
 int y = Pantry.calc(12);
 System.out.print(y);
 
 Note that if there is no output, please choose ""nothing""
-</pre>"""
+&lt;/pre&gt;"
 "Points","1"
 "Difficulty","1"
-"Option","100","4-24"
-"Option","50","4-4"
-"Option","50","4-24"
-"Option","0","4 2-24"
-"Option","50","4-12"
-"Option","80","6-24"
-"Option","80","22-24"
+"Option","100","13-24"
+"Option","50","13-12"
+"Option","50","13-72"
+"Option","0","13 6-84"
+"Option","50","13-12"
+"Option","80","15-24"
+"Option","80","67-24"
 "Option","50","1-24"
-"Option","50","24-24"
-"Option","0","8"
-"Option","0","4"
-"Option","0","2"
-"Option","0","2-2"
+"Option","50","72-84"
+"Option","0","26"
+"Option","0","12"
+"Option","0","6"
+"Option","0","6-7"
 "Option","0","6-4"
 "Option","0","nothing"
 

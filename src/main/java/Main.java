@@ -298,7 +298,7 @@ public class Main {
 
 
                 // Generate CSV
-                questionText = "\"<pre>" + questionText + "</pre>\"";
+                questionText = "&lt;pre&gt;" + questionText + "&lt;/pre&gt;";
 
                 String[][] csvData = new String[5 + choices.length][];
                 csvData[0] = new String[]{"NewQuestion", "MC"};

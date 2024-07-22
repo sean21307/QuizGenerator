@@ -2,13 +2,13 @@
 "Title",""
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
-int quantity = 3;
-boolean f = 4 <= quantity;
+int quantity = 2;
+boolean f = 5 <= quantity;
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","3"
+"Answer","100","2"
 "Answer","100","false"
 
 "NewQuestion","SA"
@@ -27,8 +27,8 @@ boolean tall = false || true && false && true;
 "QuestionText","Type: FMB
 Specify the output and the variables' values after the following code segment is executed.
 
-int index = 2;
-if (index < 6)
+int index = 3;
+if (index < 2)
 {
     System.out.print(index);
     index = index - 1;
@@ -38,17 +38,17 @@ If there is no output, please specify ""nothing"" (no quotes) in the blank for t
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","2"
-"Answer","100","1"
+"Answer","100","nothing"
+"Answer","100","3"
 
 "NewQuestion","SA"
 "Title",""
 "QuestionText","Type: FMB
 Specify the variables' values after the following code segment is executed.
 
-int x = 5;
-int y = 9;
-int z = 11;
+int x = 2;
+int y = 5;
+int z = 12;
 
 if (y % x == 0)
 {
@@ -79,7 +79,7 @@ else
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
+"Answer","100","2"
 "Answer","100","5"
-"Answer","100","9"
-"Answer","100","11"
+"Answer","100","144"
 
