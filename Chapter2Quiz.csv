@@ -1,25 +1,25 @@
 "NewQuestion","SA"
-"Title",""
+"Title","Example Title"
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
-long  result = 1 + 5 / 3;
+long  result = 3 + 3 / 1;
 
 Pay attention to how to specify a long value.
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","2L"
-"Answer","100","2l"
+"Answer","100","6L"
+"Answer","100","6l"
 
 "NewQuestion","SA"
-"Title",""
+"Title","Example Title"
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
 
-int today = 1;
-int yesterday = 10;
-int tomorrow = 7;
+int today = 2;
+int yesterday = 8;
+int tomorrow = 4;
 yesterday = today;
 today = tomorrow;
 tomorrow = yesterday + today;
@@ -31,19 +31,19 @@ tomorrow = today + yesterday;
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
+"Answer","100","6"
 "Answer","100","8"
-"Answer","100","9"
-"Answer","100","17"
+"Answer","100","14"
 
 "NewQuestion","SA"
-"Title",""
+"Title","Example Title"
 "QuestionText","Type: FMB
 What are variables' values after the following code segment is executed?
-double  n = 5.4 / 6 * (87 - 6);
+double  n = 5.4 / 7 * (63 - 10);
 
 "
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","72.9"
+"Answer","100","40.89"
 

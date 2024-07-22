@@ -1,4 +1,5 @@
 Question #1:
+Title: Example Title
 
 #R1#: int, random, 1, 10
 #R2#: int, random, 2, 8

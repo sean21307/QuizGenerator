@@ -10,15 +10,15 @@ public class Service
 
     public Service()
     {
-        this.length = 2;
+        this.length = 6;
         System.out.print(this.length + ""-"");
     }
 
 
     public Service(int length)
     {
-        if (length > 9) {
-            length = 9;
+        if (length > 7) {
+            length = 7;
         }
 
         this.length = length;
@@ -34,9 +34,9 @@ public class Conductor
     public static void main(String[] args)
     {
         Service arrange = new Service();
-        Service clean = new Service(3);
-        arrange.length += 9;
-        clean.length += 7;
+        Service clean = new Service(5);
+        arrange.length += 4;
+        clean.length += 6;
         System.out.print(arrange.length + ""-"");
         System.out.print(clean.length + ""-"");
     }
@@ -47,5 +47,5 @@ If there is no output, please specify ""nothing"" (no quotes) in the blank for t
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","2-4-11-11-"
+"Answer","100","6-6-10-12-"
 

@@ -19,6 +19,7 @@ public class Main {
     static final String SOLUTION_PREFIX = "Solution:";
     static final String SOLUTION_TYPE_PREFIX = "SolutionType:";
     static final String UNIT_PREFIX = "Unit:";
+    static final String TITLE_PREFIX = "Title:";
     static Map<String, Object> variables = new HashMap<>();
 
     public static void main(String[] args) {
@@ -104,6 +105,7 @@ public class Main {
             String executionCode = "";
             String questionType = "";
             String csvQuestionText = "";
+            String title = "";
             boolean mustExecute = false;
 
             while (file.hasNext()) {
@@ -115,6 +117,9 @@ public class Main {
                     questionNumber = nextLine.substring(hashIndex + 1, hashIndex + 2);
                     executionCode = "";
                     mustExecute = false;
+                } else if (nextLine.contains(TITLE_PREFIX)) {
+                    int colonIndex = nextLine.indexOf(":");
+                    title = nextLine.substring(colonIndex + 1).trim();
                 }
 
                 if (nextLine.startsWith("#")) {
@@ -125,7 +130,7 @@ public class Main {
                 } else if (nextLine.equals(TEXT_SECTION)) {
                     csvQuestionText = readTextSection(file, run, questionNumber);
                 } else if (nextLine.contains(SOLUTION_PREFIX)) {
-                    processSolution(file, nextLine, run, mustExecute, executionCode, questionType, csvFileName, csvQuestionText, allQuestions);
+                    processSolution(file, nextLine, run, mustExecute, executionCode, questionType, csvFileName, csvQuestionText, allQuestions, title);
                 } else if (nextLine.contains(QUESTION_TYPE_PREFIX)) {
                     questionType = nextLine.substring(nextLine.indexOf(":") + 1).trim();
                 }
@@ -255,7 +260,7 @@ public class Main {
         return null;
     }
 
-    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType, String csvFileName, String questionText, List<String[][]> allQuestions) {
+    private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType, String csvFileName, String questionText, List<String[][]> allQuestions, String title) {
         if (mustExecute) {
             System.out.println(executionCode);
             String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
@@ -298,11 +303,9 @@ public class Main {
 
 
                 // Generate CSV
-                questionText = "&lt;pre&gt;" + questionText + "&lt;/pre&gt;";
-
                 String[][] csvData = new String[5 + choices.length][];
                 csvData[0] = new String[]{"NewQuestion", "MC"};
-                csvData[1] = new String[]{"Title", ""};
+                csvData[1] = new String[]{"Title", title};
                 csvData[2] = new String[]{"QuestionText", questionText};
                 csvData[3] = new String[]{"Points", "1"};
                 csvData[4] = new String[]{"Difficulty", "1"};
@@ -317,7 +320,7 @@ public class Main {
                 // Generate CSV
                 String[][] csvData = new String[6 + solutionStringArray.length][];
                 csvData[0] = new String[]{"NewQuestion", "SA"};
-                csvData[1] = new String[]{"Title", ""};
+                csvData[1] = new String[]{"Title", title};
                 csvData[2] = new String[]{"QuestionText", questionText};
                 csvData[3] = new String[]{"Points", "1"};
                 csvData[4] = new String[]{"Difficulty", "1"};
@@ -357,7 +360,7 @@ public class Main {
 
             String[][] csvData = new String[6 + entries.length][];
             csvData[0] = new String[]{"NewQuestion", "SA"};
-            csvData[1] = new String[]{"Title", ""};
+            csvData[1] = new String[]{"Title", title};
             csvData[2] = new String[]{"QuestionText", questionText};
             csvData[3] = new String[]{"Points", "1"};
             csvData[4] = new String[]{"Difficulty", "1"};
