@@ -1,16 +1,6 @@
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output of the following code segment.
-
-int[] collection = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-int position = 4;
-System.out.print(collection[position - 1] + ""-"");
-System.out.print(collection[position] + ""-"");
-System.out.print(collection[position + 1]);
-
-Note that if there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;following&nbsp;code&nbsp;segment.<br><br>int[]&nbsp;collection&nbsp;=&nbsp;{0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6,&nbsp;7,&nbsp;8,&nbsp;9};<br>int&nbsp;position&nbsp;=&nbsp;4;<br>System.out.print(collection[position&nbsp;-&nbsp;1]&nbsp;+&nbsp;""-"");<br>System.out.print(collection[position]&nbsp;+&nbsp;""-"");<br>System.out.print(collection[position&nbsp;+&nbsp;1]);<br><br>Note&nbsp;that&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;output,&nbsp;please&nbsp;specify&nbsp;""nothing""&nbsp;(no&nbsp;quotes)&nbsp;in&nbsp;the&nbsp;blank&nbsp;for&nbsp;the&nbsp;output.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
@@ -18,47 +8,23 @@ Note that if there is no output, please specify ""nothing"" (no quotes) in the b
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the array's content after the following code segment is executed.
-int[] group = new int[5];
-for (int index = 2; index <= group.length; index++)
-{
-  group[index] = 5;
-}
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;array's&nbsp;content&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed.<br>int[]&nbsp;group&nbsp;=&nbsp;new&nbsp;int[7];<br>for&nbsp;(int&nbsp;index&nbsp;=&nbsp;2;&nbsp;index&nbsp;<=&nbsp;group.length;&nbsp;index++)<br>{<br>&nbsp;&nbsp;group[index]&nbsp;=&nbsp;4;<br>}<br>","html"
 "Points","1"
 "Difficulty","1"
-"InputBox","5","40"
+"InputBox","7","40"
 "Answer","100","0"
 "Answer","100","1"
 "Answer","100","2"
 "Answer","100","3"
 "Answer","100","4"
+"Answer","100","5"
+"Answer","100","6"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output of the program after the main method is executed.
-
-public static void f(int[] matrix, int depth, int height)
-{
-  matrix[depth] = height;
-  matrix[height] = depth;
-}
-
-public static void main(String[] args)
-{
-  int[] inventory = {7, 2, 9, 9, 7, 9};
-  int r = 4;
-  f(inventory, 2, r);
-  for (int index = 0; index < inventory.length; index ++)
-  {
-    System.out.print(inventory[index] + ""-"");
-  }
-}
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;program&nbsp;after&nbsp;the&nbsp;main&nbsp;method&nbsp;is&nbsp;executed.<br><br>public&nbsp;static&nbsp;void&nbsp;f(int[]&nbsp;matrix,&nbsp;int&nbsp;depth,&nbsp;int&nbsp;height)<br>{<br>&nbsp;&nbsp;matrix[depth]&nbsp;=&nbsp;height;<br>&nbsp;&nbsp;matrix[height]&nbsp;=&nbsp;depth;<br>}<br><br>public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)<br>{<br>&nbsp;&nbsp;int[]&nbsp;inventory&nbsp;=&nbsp;{5,&nbsp;3,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;9};<br>&nbsp;&nbsp;int&nbsp;r&nbsp;=&nbsp;3;<br>&nbsp;&nbsp;f(inventory,&nbsp;5,&nbsp;r);<br>&nbsp;&nbsp;for&nbsp;(int&nbsp;index&nbsp;=&nbsp;0;&nbsp;index&nbsp;<&nbsp;inventory.length;&nbsp;index&nbsp;++)<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(inventory[index]&nbsp;+&nbsp;""-"");<br>&nbsp;&nbsp;}<br>}<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","7-2-4-9-2-9-"
+"Answer","100","5-3-3-5-5-3-"
 

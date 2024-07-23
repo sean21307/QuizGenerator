@@ -34,6 +34,16 @@ public class Main {
 
     }
 
+    public static String formatToHtml(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        
+        input = input.replace(" ", "&nbsp;");
+        input = input.replace("\n", "<br>");
+        return input;
+    }
+
     // Generates a CSV file for questions
     public static void writeToCsv(String fileName, List<String[][]> questions) {
         File file = new File(fileName);
@@ -261,6 +271,8 @@ public class Main {
     }
 
     private static void processSolution(Scanner file, String nextLine, XWPFRun run, boolean mustExecute, String executionCode, String questionType, String csvFileName, String questionText, List<String[][]> allQuestions, String title) {
+        questionText = formatToHtml(questionText);
+
         if (mustExecute) {
             System.out.println(executionCode);
             String[] solutionStringArray = Executor.compileAndExecute(executionCode).split("\n");
@@ -306,7 +318,7 @@ public class Main {
                 String[][] csvData = new String[5 + choices.length][];
                 csvData[0] = new String[]{"NewQuestion", "MC"};
                 csvData[1] = new String[]{"Title", title};
-                csvData[2] = new String[]{"QuestionText", questionText};
+                csvData[2] = new String[]{"QuestionText", questionText, "html"};
                 csvData[3] = new String[]{"Points", "1"};
                 csvData[4] = new String[]{"Difficulty", "1"};
                 for (int i = 0; i < choices.length; i++) {
@@ -321,7 +333,7 @@ public class Main {
                 String[][] csvData = new String[6 + solutionStringArray.length][];
                 csvData[0] = new String[]{"NewQuestion", "SA"};
                 csvData[1] = new String[]{"Title", title};
-                csvData[2] = new String[]{"QuestionText", questionText};
+                csvData[2] = new String[]{"QuestionText", questionText, "html"};
                 csvData[3] = new String[]{"Points", "1"};
                 csvData[4] = new String[]{"Difficulty", "1"};
                 csvData[5] = new String[]{"InputBox", String.valueOf(solutionStringArray.length), "40"};
@@ -361,7 +373,7 @@ public class Main {
             String[][] csvData = new String[6 + entries.length][];
             csvData[0] = new String[]{"NewQuestion", "SA"};
             csvData[1] = new String[]{"Title", title};
-            csvData[2] = new String[]{"QuestionText", questionText};
+            csvData[2] = new String[]{"QuestionText", questionText, "html"};
             csvData[3] = new String[]{"Points", "1"};
             csvData[4] = new String[]{"Difficulty", "1"};
             csvData[5] = new String[]{"InputBox", String.valueOf(entries.length), "40"};

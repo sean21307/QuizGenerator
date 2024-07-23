@@ -1,95 +1,22 @@
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output of the program.
-
-public class TalkRun
-{
-  String result = """";
-
-  public static void talk()
-  {
-    String message = ""hello"";
-    System.out.print(message);
-  }
-
-  public static void run()
-  {
-    double  amount = 44.3;
-    System.out.print( amount);
-  }
-
-  public static void main(String[] args)
-  {
-    String name = "" Joe"";
-    talk();
-    run();
-    System.out.print(name);
-  }
-}
-
-Note that you will need to pay attention to how a double value will be printed out.
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;of&nbsp;the&nbsp;program.<br><br>public&nbsp;class&nbsp;TalkRun<br>{<br>&nbsp;&nbsp;String&nbsp;result&nbsp;=&nbsp;"""";<br><br>&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;talk()<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;message&nbsp;=&nbsp;""hello"";<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(message);<br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;run()<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;score&nbsp;=&nbsp;40.1;<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(score);<br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;name&nbsp;=&nbsp;""&nbsp;Dan"";<br>&nbsp;&nbsp;&nbsp;&nbsp;talk();<br>&nbsp;&nbsp;&nbsp;&nbsp;run();<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(name);<br>&nbsp;&nbsp;}<br>}<br><br>Note&nbsp;that&nbsp;you&nbsp;will&nbsp;need&nbsp;to&nbsp;pay&nbsp;attention&nbsp;to&nbsp;how&nbsp;a&nbsp;double&nbsp;value&nbsp;will&nbsp;be&nbsp;printed&nbsp;out.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","hello44.3 Joe"
+"Answer","100","hello40.1 Dan"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Read the method definition below:
-
-public static String hello(String name, int age)
-{
-  String greeting = ""Hello "" + name;
-  if (age < 18)
-  {
-    greeting = greeting + ""!"";
-  }
-  else
-  {
-    greeting = greeting + ""! Safety first."";
-  }
-
-  return greeting;
-}
-
-Given the code above, what is printed by the following code segment:
-String message = hello("" John"", 25);
-System.out.println(message);
-"
+"QuestionText","Type:&nbsp;FMB<br>Read&nbsp;the&nbsp;method&nbsp;definition&nbsp;below:<br><br>public&nbsp;static&nbsp;String&nbsp;hello(String&nbsp;name,&nbsp;int&nbsp;age)<br>{<br>&nbsp;&nbsp;String&nbsp;greeting&nbsp;=&nbsp;""Hello&nbsp;""&nbsp;+&nbsp;name;<br>&nbsp;&nbsp;if&nbsp;(age&nbsp;<&nbsp;18)<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;greeting&nbsp;=&nbsp;greeting&nbsp;+&nbsp;""!"";<br>&nbsp;&nbsp;}<br>&nbsp;&nbsp;else<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;greeting&nbsp;=&nbsp;greeting&nbsp;+&nbsp;""!&nbsp;Safety&nbsp;first."";<br>&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;return&nbsp;greeting;<br>}<br><br>Given&nbsp;the&nbsp;code&nbsp;above,&nbsp;what&nbsp;is&nbsp;printed&nbsp;by&nbsp;the&nbsp;following&nbsp;code&nbsp;segment:<br>String&nbsp;message&nbsp;=&nbsp;hello(""&nbsp;Dan"",&nbsp;14);<br>System.out.println(message);<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","Hello  John! Safety first."
+"Answer","100","Hello  Dan!"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Read the method definition below:
-public class Joining
-{
-  public static double join(double score)
-  {
-    if (score < 50)
-    {
-      score = score / 2;
-      return score;
-    }
-    else
-    {
-      return 100.0;
-    }
-  }
-
-
-  public static void main(String[] args)
-  {
-    System.out.print(join(81.6));
-  }
-}
-"
+"QuestionText","Type:&nbsp;FMB<br>Read&nbsp;the&nbsp;method&nbsp;definition&nbsp;below:<br>public&nbsp;class&nbsp;Joining<br>{<br>&nbsp;&nbsp;public&nbsp;static&nbsp;double&nbsp;join(double&nbsp;score)<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(score&nbsp;<&nbsp;50)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;score&nbsp;=&nbsp;score&nbsp;/&nbsp;2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;score;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;100.0;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;}<br><br><br>&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(join(90.8));<br>&nbsp;&nbsp;}<br>}<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"

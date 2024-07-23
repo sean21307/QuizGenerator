@@ -1,22 +1,15 @@
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-What are variables' values after the following code segment is executed?
-int quantity = 5;
-boolean f = 3 <= quantity;
-"
+"QuestionText","Type:&nbsp;FMB<br>What&nbsp;are&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed?<br>int&nbsp;quantity&nbsp;=&nbsp;8;<br>boolean&nbsp;f&nbsp;=&nbsp;9&nbsp;<=&nbsp;quantity;<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","5"
-"Answer","100","true"
+"Answer","100","8"
+"Answer","100","false"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-What are variables' values after the following code segment is executed?
-boolean tall = false || true && false && true;
-"
+"QuestionText","Type:&nbsp;FMB<br>What&nbsp;are&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed?<br>boolean&nbsp;tall&nbsp;=&nbsp;false&nbsp;||&nbsp;true&nbsp;&&&nbsp;false&nbsp;&&&nbsp;true;<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
@@ -24,62 +17,20 @@ boolean tall = false || true && false && true;
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output and the variables' values after the following code segment is executed.
-
-int index = 5;
-if (index < 3)
-{
-    System.out.print(index);
-    index = index - 1;
-}
-If there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;and&nbsp;the&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed.<br><br>int&nbsp;index&nbsp;=&nbsp;4;<br>if&nbsp;(index&nbsp;<&nbsp;2)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(index);<br>&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;=&nbsp;index&nbsp;-&nbsp;1;<br>}<br>If&nbsp;there&nbsp;is&nbsp;no&nbsp;output,&nbsp;please&nbsp;specify&nbsp;""nothing""&nbsp;(no&nbsp;quotes)&nbsp;in&nbsp;the&nbsp;blank&nbsp;for&nbsp;the&nbsp;output.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
 "Answer","100","nothing"
-"Answer","100","5"
+"Answer","100","4"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the variables' values after the following code segment is executed.
-
-int x = 2;
-int y = 6;
-int z = 11;
-
-if (y % x == 0)
-{
-    if (x >= z)
-    {
-        z = x * y;
-    }
-    else
-    {
-        z = x * x;
-    }
-}
-else
-{
-    if (z >= x + y)
-    {
-        if (x >= y)
-        {
-            y = y * y;
-        }
-        else
-        {
-            z = z * z;
-        }
-    }
-}
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed.<br><br>int&nbsp;x&nbsp;=&nbsp;2;<br>int&nbsp;y&nbsp;=&nbsp;5;<br>int&nbsp;z&nbsp;=&nbsp;12;<br><br>if&nbsp;(y&nbsp;%&nbsp;x&nbsp;==&nbsp;0)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(x&nbsp;>=&nbsp;z)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;x&nbsp;*&nbsp;y;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;x&nbsp;*&nbsp;x;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>else<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(z&nbsp;>=&nbsp;x&nbsp;+&nbsp;y)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(x&nbsp;>=&nbsp;y)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;y&nbsp;*&nbsp;y;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;z&nbsp;*&nbsp;z;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
 "Answer","100","2"
-"Answer","100","6"
-"Answer","100","4"
+"Answer","100","5"
+"Answer","100","144"
 

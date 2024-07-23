@@ -1,51 +1,20 @@
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output and the variables' values after the following code segment is executed.
-
-int  a;
-int v = 2;
-
-for ( a = 8;  a > v;  a--)
-{
-    System.out.print( a + ""-"");
-    System.out.print(v + ""$"");
-    v += 2;
-}
-
-Note:
-(1) If there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
-(2) If a variable is out of scope after the code segment is executed, please specify ""out of scope"" (no quotes) in the blank for the variable.
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;and&nbsp;the&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed.<br><br>int&nbsp;&nbsp;a;<br>int&nbsp;v&nbsp;=&nbsp;3;<br><br>for&nbsp;(&nbsp;a&nbsp;=&nbsp;10;&nbsp;&nbsp;a&nbsp;>&nbsp;v;&nbsp;&nbsp;a--)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(&nbsp;a&nbsp;+&nbsp;""-"");<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(v&nbsp;+&nbsp;""$"");<br>&nbsp;&nbsp;&nbsp;&nbsp;v&nbsp;+=&nbsp;2;<br>}<br><br>Note:<br>(1)&nbsp;If&nbsp;there&nbsp;is&nbsp;no&nbsp;output,&nbsp;please&nbsp;specify&nbsp;""nothing""&nbsp;(no&nbsp;quotes)&nbsp;in&nbsp;the&nbsp;blank&nbsp;for&nbsp;the&nbsp;output.<br>(2)&nbsp;If&nbsp;a&nbsp;variable&nbsp;is&nbsp;out&nbsp;of&nbsp;scope&nbsp;after&nbsp;the&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed,&nbsp;please&nbsp;specify&nbsp;""out&nbsp;of&nbsp;scope""&nbsp;(no&nbsp;quotes)&nbsp;in&nbsp;the&nbsp;blank&nbsp;for&nbsp;the&nbsp;variable.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
-"Answer","100","8-2$7-4$"
-"Answer","100","6"
-"Answer","100","6"
+"Answer","100","10-3$9-5$8-7$"
+"Answer","100","7"
+"Answer","100","9"
 
 "NewQuestion","SA"
 "Title",""
-"QuestionText","Type: FMB
-Specify the output and the variables' values after the following code segment is executed.
-
-double amount = 4.8;
-double count = 4.6;
-
-while (amount < count)
-{
-    System.out.print(amount + ""-"");
-    System.out.print(count + ""-"");
-    amount += 1.0;
-    count -= 1.0;
-}
-
-If there is no output, please specify ""nothing"" (no quotes) in the blank for the output.
-"
+"QuestionText","Type:&nbsp;FMB<br>Specify&nbsp;the&nbsp;output&nbsp;and&nbsp;the&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed.<br><br>double&nbsp;amount&nbsp;=&nbsp;4.4;<br>double&nbsp;count&nbsp;=&nbsp;5.1;<br><br>while&nbsp;(amount&nbsp;<&nbsp;count)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(amount&nbsp;+&nbsp;""-"");<br>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(count&nbsp;+&nbsp;""-"");<br>&nbsp;&nbsp;&nbsp;&nbsp;amount&nbsp;+=&nbsp;1.0;<br>&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;-=&nbsp;1.0;<br>}<br><br>If&nbsp;there&nbsp;is&nbsp;no&nbsp;output,&nbsp;please&nbsp;specify&nbsp;""nothing""&nbsp;(no&nbsp;quotes)&nbsp;in&nbsp;the&nbsp;blank&nbsp;for&nbsp;the&nbsp;output.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
-"Answer","100","nothing"
-"Answer","100","4.80"
-"Answer","100","4.60"
+"Answer","100","4.4-5.1-"
+"Answer","100","5.40"
+"Answer","100","4.10"
 

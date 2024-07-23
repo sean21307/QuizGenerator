@@ -1,33 +1,15 @@
 "NewQuestion","SA"
 "Title","Example Title"
-"QuestionText","Type: FMB
-What are variables' values after the following code segment is executed?
-long  result = 3 + 3 / 1;
-
-Pay attention to how to specify a long value.
-"
+"QuestionText","Type:&nbsp;FMB<br>What&nbsp;are&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed?<br>long&nbsp;&nbsp;amount&nbsp;=&nbsp;2&nbsp;+&nbsp;8&nbsp;/&nbsp;3;<br><br>Pay&nbsp;attention&nbsp;to&nbsp;how&nbsp;to&nbsp;specify&nbsp;a&nbsp;long&nbsp;value.<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","2","40"
-"Answer","100","6L"
-"Answer","100","6l"
+"Answer","100","4L"
+"Answer","100","4l"
 
 "NewQuestion","SA"
 "Title","Example Title"
-"QuestionText","Type: FMB
-What are variables' values after the following code segment is executed?
-
-int today = 2;
-int yesterday = 8;
-int tomorrow = 4;
-yesterday = today;
-today = tomorrow;
-tomorrow = yesterday + today;
-today = yesterday + tomorrow;
-yesterday = today;
-today = tomorrow;
-tomorrow = today + yesterday;
-"
+"QuestionText","Type:&nbsp;FMB<br>What&nbsp;are&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed?<br><br>int&nbsp;today&nbsp;=&nbsp;2;<br>int&nbsp;yesterday&nbsp;=&nbsp;9;<br>int&nbsp;tomorrow&nbsp;=&nbsp;4;<br>yesterday&nbsp;=&nbsp;today;<br>today&nbsp;=&nbsp;tomorrow;<br>tomorrow&nbsp;=&nbsp;yesterday&nbsp;+&nbsp;today;<br>today&nbsp;=&nbsp;yesterday&nbsp;+&nbsp;tomorrow;<br>yesterday&nbsp;=&nbsp;today;<br>today&nbsp;=&nbsp;tomorrow;<br>tomorrow&nbsp;=&nbsp;today&nbsp;+&nbsp;yesterday;<br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","3","40"
@@ -37,13 +19,9 @@ tomorrow = today + yesterday;
 
 "NewQuestion","SA"
 "Title","Example Title"
-"QuestionText","Type: FMB
-What are variables' values after the following code segment is executed?
-double  n = 5.4 / 7 * (63 - 10);
-
-"
+"QuestionText","Type:&nbsp;FMB<br>What&nbsp;are&nbsp;variables'&nbsp;values&nbsp;after&nbsp;the&nbsp;following&nbsp;code&nbsp;segment&nbsp;is&nbsp;executed?<br>double&nbsp;x&nbsp;=&nbsp;4.3&nbsp;/&nbsp;6&nbsp;*&nbsp;(59&nbsp;-&nbsp;10);<br><br>","html"
 "Points","1"
 "Difficulty","1"
 "InputBox","1","40"
-"Answer","100","40.89"
+"Answer","100","35.12"
 
