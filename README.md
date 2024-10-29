@@ -4,21 +4,20 @@ Basic Question Template Format (ignore parenthesis): <br>
 ```
 Question #1: (needed to start the question block)
 
-#R1#: int, random, 1, 10 (generates a random int between 1 and 10)
-#R2#: double, random, 1, 10 (generates a random double between 1.0 and 10.0)
-#S1#: {quantity, amount, total, result}  (creates a set of words)
-#N1#: from #S1# (pick a random word from the set)
+#R1#: int, random, 1, 10
+#R2#: int, random, 1, 10
+#R3#: int, random, 1, 10
+#S1#: {quantity, amount, total, result}
+#N1#: from #S1#
 
 :Text:
-The text of the question goes in here. Variables surrounded by # like #R1# will be replaced by their generated value.
-
 What are variables' values after the following code segment is executed?
-double #N1# = #R1# + #R2#;
+double #N1# = #R1# + #R2# / #R3#;
 :EndText:
 
-Solution: #R1# + #R2#
-SolutionType: double
-Unit: {} (you can specify units to append to the solution; if multiple are specified like in {L, l} then the result will appear as [5L, 5l] )
+Solution: #R1# + #R2# / #R3#
+SolutionType: long
+Unit: {L ,l}
 ```
 
 
