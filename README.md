@@ -12,7 +12,7 @@ Question #1: (needed to start the question block)
 
 :Text:
 What are variables' values after the following code segment is executed?
-double #N1# = #R1# + #R2# / #R3#;
+long #N1# = #R1# + #R2# / #R3#;
 :EndText:
 
 Solution: #R1# + #R2# / #R3#
